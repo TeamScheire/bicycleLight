@@ -3,6 +3,8 @@ var storage = {
         try {
             var objectAsString = JSON.stringify(object);
             window.localStorage.setItem(referenceName, objectAsString);
+            debug.log('item stored: ' + referenceName + ': ' + objectAsString, 'success');
+            return true;
         } catch (error) {
             console.log(error);
         }
@@ -19,6 +21,7 @@ var storage = {
     removeItem: function (referenceName) {
         try {
             window.localStorage.removeItem(referenceName);
+            debug.log('stored item removed: ' + referenceName, 'success');
             return true;
         } catch (error) {
             console.log(error);

@@ -36,10 +36,22 @@
         <ons-list-item>
             <ons-button class="savebutton">Save</ons-button>
         </ons-list-item>
+        <ons-list-header style="padding-top: 20px;">Debug commands</ons-list-header>
+        <ons-list-item>
+            <ons-button id="eraseMqtt">erase saved mqtt settings</ons-button>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-button id="eraseUser">erase saved user</ons-button>
+        </ons-list-item>
     </ons-list>
     <script>
-        ons.getScriptPage().onInit = function () {
-            app.loadSettings();
+        ons.getScriptPage().onShow = function () {
+            mqttSettings = app.loadSettings();
+
+            document.getElementById('settings-host').value = mqttSettings.host;
+            document.getElementById('settings-port').value = mqttSettings.port;
+            document.getElementById('settings-clientid').value = mqttSettings.clientid;
+            document.getElementById('settings-topic').value = mqttSettings.topic;
 
             $('#settings').on('click', '.savebutton', function (e) {
                 var newSettings = {
@@ -49,13 +61,34 @@
                     topic: $('#settings-topic').val()
                 };
 
-                console.log(newSettings);
-
                 if (app.validateSettings(newSettings)) {
                     app.saveSettings(newSettings);
-                    ons.notification.alert({message: 'New settings saved.', title: 'Settings'});
+                    ons.notification.alert({
+                        message: 'New settings saved.',
+                        title: 'Settings'
+                    });
                 } else {
-                    ons.notification.alert({message: 'Please check your settings.', title: 'Error'});
+                    ons.notification.alert({
+                        message: 'Please check your settings.',
+                        title: 'Error'
+                    });
+                }
+            });
+
+            $('#settings').on('click', '#eraseMqtt', function (e) {
+                if (storage.removeItem('mqttSettings')) {
+                    ons.notification.alert({
+                        message: 'Settings succesfully removed.',
+                        title: 'Settings'
+                    });
+                }
+            });
+            $('#settings').on('click', '#eraseUser', function (e) {
+                if (storage.removeItem('user')) {
+                    ons.notification.alert({
+                        message: 'User succesfully removed.',
+                        title: 'User'
+                    });
                 }
             });
         }

@@ -1,4 +1,10 @@
 var app = {
+    defaultMqtt: {
+        host: 'test.mosquitto.org',
+        port: '8080',
+        clientid: 'bicycleTestClient',
+        topic: 'bell/1'
+    },
     // Application Constructor
     initialize: function () {
         console.log('app initialize');
@@ -20,17 +26,12 @@ var app = {
     bindEvents: function () {
 
         setTimeout(function () {
-            //mqtt.addMessage(bluetooth.connectedDevice.id, 'app,1');
+            //mqtt.addMessage('app,1');
         }, 3000);
 
-        document.addEventListener("pause", this.onDevicePause, false);
-        document.addEventListener("resume", this.onDeviceResume, false);
-        document.addEventListener("menubutton", this.onMenuKeyDown, false);
-
-        $('body').on('click', '#btnLogscreen', function (e) {
-            debug.log('btnLogscreen clicked');
-            document.getElementById('appSplitter').right.toggle();
-        });
+        document.addEventListener("pause", app.onDevicePause, false);
+        document.addEventListener("resume", app.onDeviceResume, false);
+        document.addEventListener("menubutton", app.onMenuKeyDown, false);
 
         /*
                 $(document).on('click', '#refreshDeviceList', function (e) {
@@ -45,40 +46,43 @@ var app = {
                 */
     },
 
+    onDevicePause: function () {
+        debug.log('in pause');
+        mqtt.addMessage('app,2');
+    },
+    onDeviceResume: function () {
+        debug.log('out of pause');
+        mqtt.addMessage('app,3');
+    },
+    onMenuKeyDown: function () {
+        debug.log('menubuttonpressed');
+        mqtt.addMessage('app,4');
+    },
     onError: function (error) {
         debug.log(JSON.stringify(error), 'error');
     },
 
-    loadUser: function() {
-
+    loadUser: function () {
+        return storage.getItem('user');
     },
-
-    validateUser: function(newUser) {
+    validateUser: function (newUser) {
+        // XXX make api call to verify token
+        newUser.userName = 'testuser01';
         return newUser;
     },
-
-    saveUser: function(newUser) {
-
+    saveUser: function (newUser) {
+        storage.setItem('user', newUser);
     },
 
     loadSettings: function () {
-        document.getElementById('settings-host').value = storage.getItem('host', 'test.mosquitto.org');
-        document.getElementById('settings-port').value = storage.getItem('port', '8080');
-        document.getElementById('settings-clientid').value = storage.getItem('clientid', 'bicycleTestClient');
-        document.getElementById('settings-topic').value = storage.getItem('topic', 'bell/1');
+        return storage.getItem('mqttSettings', app.defaultMqtt);
     },
-
     validateSettings: function (newSettings) {
         // XXX validate settings
         return true;
     },
-    
     saveSettings: function (newSettings) {
-        storage.setItem('host', newSettings.host);
-        storage.setItem('port', newSettings.port);
-        storage.setItem('clientid', newSettings.clientid);
-        storage.setItem('topic', newSettings.topic);
-        debug.log('new settings: ' + JSON.stringify(newSettings), 'success');
+        storage.setItem('mqttSettings', newSettings);
     }
 };
 
