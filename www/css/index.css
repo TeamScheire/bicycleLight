@@ -134,3 +134,7 @@ h1 {
     font-size: smaller;
     margin-top: 5px;
 }
+
+.list-header {
+    padding-top: 20px;
+}
