@@ -5,6 +5,7 @@ var app = {
         clientid: 'bicycleTestClient',
         topic: 'bell/1'
     },
+    user: {},
     // Application Constructor
     initialize: function () {
         console.log('app initialize');
@@ -63,7 +64,7 @@ var app = {
     },
 
     loadUser: function () {
-        return storage.getItem('user');
+        app.user = storage.getItem('user');
     },
     validateUser: function (newUser) {
         // XXX make api call to verify token
@@ -73,6 +74,18 @@ var app = {
     saveUser: function (newUser) {
         storage.setItem('user', newUser);
     },
+    checkIfUserLoggedIn() {
+        app.loadUser();
+
+        if (app.user) {
+            $('.logged-in').show();
+            $('.logged-out').hide();
+            $('.username').html(app.user.userName);
+        } else {
+            $('.logged-out').show();
+            $('.logged-in').hide();
+        }
+    }, 
 
     loadSettings: function () {
         return storage.getItem('mqttSettings', app.defaultMqtt);
