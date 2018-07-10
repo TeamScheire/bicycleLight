@@ -1,0 +1,63 @@
+<ons-page id="settings">
+    <ons-list>
+        <ons-list-header>MQTT settings</ons-list-header>
+        <ons-list-item class="input-items">
+            <div class="left">
+                host
+            </div>
+            <label class="center">
+                <ons-input id="settings-host" float placeholder="mqtt hostname"></ons-input>
+            </label>
+        </ons-list-item>
+        <ons-list-item class="input-items">
+            <div class="left">
+                port
+            </div>
+            <label class="center">
+                <ons-input id="settings-port" float placeholder="mqtt port"></ons-input>
+            </label>
+        </ons-list-item>
+        <ons-list-item class="input-items">
+            <div class="left">
+                clientId
+            </div>
+            <label class="center">
+                <ons-input id="settings-clientid" float placeholder="mqtt clientid"></ons-input>
+            </label>
+        </ons-list-item>
+        <ons-list-item class="input-items">
+            <div class="left">
+                topic
+            </div>
+            <label class="center">
+                <ons-input id="settings-topic" float placeholder="mqtt topic"></ons-input>
+            </label>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-button class="savebutton">Save</ons-button>
+        </ons-list-item>
+    </ons-list>
+    <script>
+        ons.getScriptPage().onInit = function () {
+            app.loadSettings();
+
+            $('#settings').on('click', '.savebutton', function (e) {
+                var newSettings = {
+                    host: $('#settings-host').val(),
+                    port: $('#settings-port').val(),
+                    clientid: $('#settings-clientid').val(),
+                    topic: $('#settings-topic').val()
+                };
+
+                console.log(newSettings);
+
+                if (app.validateSettings(newSettings)) {
+                    app.saveSettings(newSettings);
+                    ons.notification.alert({message: 'New settings saved.', title: 'Settings'});
+                } else {
+                    ons.notification.alert({message: 'Please check your settings.', title: 'Error'});
+                }
+            });
+        }
+    </script>
+</ons-page>

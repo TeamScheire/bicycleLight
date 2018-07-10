@@ -1,0 +1,53 @@
+<ons-page id="user">
+    <ons-card>
+        <p>You need an acount at www.xxx.be. After creating your profile, you will receive a unique token.</p>
+        <p>Please fill out that token here.</p>
+    </ons-card>
+    <ons-list>
+        <ons-list-header>User</ons-list-header>
+        <ons-list-item class="input-items">
+            <div class="left">
+                token
+            </div>
+            <label class="center">
+                <ons-input id="user-token" float placeholder="your token"></ons-input>
+            </label>
+        </ons-list-item>
+
+        <ons-list-item>
+            <ons-button class="savebutton">Check token</ons-button>
+        </ons-list-item>
+    </ons-list>
+    <script>
+        // XXX When user is authanticated, show user credentials and log out button
+
+        
+        ons.getScriptPage().onInit = function () {
+            app.loadUser();
+
+            $('#user').on('click', '.savebutton', function (e) {
+                var newUser = {
+                    token: $('#user-token').val()
+                };
+
+                console.log(newUser);
+
+                newUser = app.validateUser(newUser)
+
+                if (newUser) {
+                    app.saveUser(newUser);
+                    ons.notification.alert({
+                        message: 'New user saved.',
+                        title: 'User'
+                    });
+                    // XXX redirect to device page
+                } else {
+                    ons.notification.alert({
+                        message: 'Please check your user token.',
+                        title: 'Token not correct'
+                    });
+                }
+            });
+        }
+    </script>
+</ons-page>
