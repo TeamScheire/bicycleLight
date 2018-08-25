@@ -34,9 +34,9 @@
             </ons-toolbar>
             <ons-tabbar swipeable id="appTabbar" position="auto">
                 <ons-tab label="home" icon="fa-home" page="home.html"></ons-tab>
-                <ons-tab label="user" icon="fa-user" page="user.html" active></ons-tab>
+                <ons-tab label="user" icon="fa-user" page="user.html"></ons-tab>
                 <ons-tab label="device" icon="fa-bluetooth" page="device.html"></ons-tab>
-                <ons-tab label="activity" icon="fa-bicycle" page="activity.html"></ons-tab>
+                <ons-tab label="activity" icon="fa-bicycle" page="activity.html" active></ons-tab>
                 <ons-tab label="settings" icon="fa-wrench" page="settings.html"></ons-tab>
             </ons-tabbar>
 
@@ -46,14 +46,16 @@
                         event.currentTarget.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute(
                             'label');
                     }
-
-                    if (event.tabItem.page.indexOf('settings') >= 0) {
-                        app.loadSettings();
-                    }
                 });
 
                 $('body').on('click', '#btnLogscreen', function (e) {
                     document.getElementById('appSplitter').right.toggle();
+                });
+                $('body').on('click', 'a', function (e) {
+                    e.preventDefault();
+                    var page = $(this).attr('data-label');
+                    var pageItem = $('#appTabbar [label="' + page + '"]');
+                    document.querySelector('#appTabbar').setActiveTab($('ons-tab').index(pageItem));
                 });
             </script>
         </ons-page>
@@ -61,9 +63,25 @@
 
     <template id="home.html">
         <ons-page>
-            <p class="intro">
-                Welcome
-            </p>
+            <img src="img/becme-banner.png" alt="BeCME" />
+            <ons-card>
+                <p>Een applicatie voor fietsers met een slim fietslicht om te melden waar de gevaarlijke punten zijn op hun
+                    weg.</p>
+            </ons-card>
+            <ons-card>
+                <p>Er zijn twee stappen om te starten:</p>
+                <ol>
+                    <li>Vul je token in bij
+                        <a href="#" data-label="user">user</a>
+                    </li>
+                    <li>Zet je slim fietslicht aan en verbind het met de app via
+                        <a href="#" data-label="device">device</a>
+                    </li>
+                </ol>
+            </ons-card>
+            <ons-card>
+                Veel fietsplezier!
+            </ons-card>
         </ons-page>
     </template>
 
@@ -71,14 +89,6 @@
         <ons-page>
             <p class="intro">
                 ble devices
-            </p>
-        </ons-page>
-    </template>
-
-    <template id="activity.html">
-        <ons-page>
-            <p class="intro">
-                activity
             </p>
         </ons-page>
     </template>
@@ -94,16 +104,16 @@
         </ons-page>
     </template>
 
-
     <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript" src="lib/OnsenUI/js/onsenui.min.js"></script>
     <script type="text/javascript" src="lib/jquery/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="lib/moment.min.js"></script>
     <script type="text/javascript" src="lib/paho-mqtt.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/debug.js"></script>
     <script type="text/javascript" src="js/storage.js"></script>
     <script type="text/javascript" src="js/gps.js"></script>
+    <script type="text/javascript" src="js/mqtt.js"></script>
 </body>
 
 </html>

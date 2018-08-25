@@ -1,10 +1,4 @@
 var app = {
-    defaultMqtt: {
-        host: 'test.mosquitto.org',
-        port: '8080',
-        clientid: 'bicycleTestClient',
-        topic: 'bell/1'
-    },
     user: {},
     // Application Constructor
     initialize: function () {
@@ -18,7 +12,8 @@ var app = {
 
     onDeviceReady: function () {
         app.bindEvents();
-        //mqtt.initialize();
+        app.loadUser();
+        mqtt.initialize();
         //gps.getLocation();
         //bluetooth.initialize();
         debug.log('device ready', 'success');
@@ -67,7 +62,7 @@ var app = {
         app.user = storage.getItem('user');
     },
     validateUser: function (newUser) {
-        // XXX make api call to verify token
+        // TODO make api call to verify token
         newUser.userName = 'testuser01';
         return newUser;
     },
@@ -85,17 +80,6 @@ var app = {
             $('.logged-out').show();
             $('.logged-in').hide();
         }
-    }, 
-
-    loadSettings: function () {
-        return storage.getItem('mqttSettings', app.defaultMqtt);
-    },
-    validateSettings: function (newSettings) {
-        // XXX validate settings
-        return true;
-    },
-    saveSettings: function (newSettings) {
-        storage.setItem('mqttSettings', newSettings);
     }
 };
 
