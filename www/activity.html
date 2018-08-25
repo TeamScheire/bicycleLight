@@ -1,0 +1,35 @@
+<ons-page id="activity">
+    <ons-list>
+        <ons-list-header>Sent messages</ons-list-header>
+        <div id="sentMessage">
+            <ons-list-item>
+                <em>no messages sent yet</em>
+            </ons-list-item>
+        </div>
+        <ons-list-header>Debug commands</ons-list-header>
+        <ons-list-item class="showOnMqttDisconnected debug">
+            <ons-button id="mqttConnect">Connect Mqtt</ons-button>
+        </ons-list-item>
+        <ons-list-item class="showOnMqttConnected debug">
+            <ons-button id="mqttSendTest">Send Mqtt Test Message</ons-button>
+            <ons-button id="mqttDisconnect">Disconnect Mqtt</ons-button>
+            
+        </ons-list-item>
+    </ons-list>
+    <script>
+        ons.getScriptPage().onShow = function () {
+            mqtt.toggleConnectionButtons();
+
+            $('#activity').on('click', '#mqttConnect', function (e) {
+                mqtt.connect();
+            });
+            $('#activity').on('click', '#mqttDisconnect', function (e) {
+                mqtt.disconnect();
+            });
+            $('#activity').on('click', '#mqttSendTest', function (e) {
+                var data = 'testmessage';
+                mqtt.sendMessage(data);
+            });
+        }
+    </script>
+</ons-page>

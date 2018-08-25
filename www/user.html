@@ -33,6 +33,7 @@
             app.checkIfUserLoggedIn();
 
             $('#user').on('click', '.savebutton', function (e) {
+                console.log('savebutton clicked');
                 var newUser = {
                     token: $('#user-token').val()
                 };
