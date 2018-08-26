@@ -3,26 +3,21 @@ var app = {
     // Application Constructor
     initialize: function () {
         console.log('app initialize');
-        ons.ready(function () {
-            console.log('ready');
-            //console.log(window.device);
-            app.onDeviceReady();
-        });
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
     onDeviceReady: function () {
+        debug.log('device ready', 'success');
         app.bindEvents();
         app.loadUser();
         mqtt.initialize();
-        //gps.getLocation();
+        gps.getLocation();
         //bluetooth.initialize();
-        debug.log('device ready', 'success');
     },
 
     bindEvents: function () {
-
         setTimeout(function () {
-            //mqtt.addMessage('app,1');
+            mqtt.sendMessage('app,1');
         }, 3000);
 
         document.addEventListener("pause", app.onDevicePause, false);
@@ -40,19 +35,20 @@ var app = {
                     bluetooth.disconnectDevice(e);
                 });
                 */
+
     },
 
     onDevicePause: function () {
         debug.log('in pause');
-        mqtt.addMessage('app,2');
+        mqtt.sendMessage('app,2');
     },
     onDeviceResume: function () {
         debug.log('out of pause');
-        mqtt.addMessage('app,3');
+        mqtt.sendMessage('app,3');
     },
     onMenuKeyDown: function () {
         debug.log('menubuttonpressed');
-        mqtt.addMessage('app,4');
+        mqtt.sendMessage('app,4');
     },
     onError: function (error) {
         debug.log(JSON.stringify(error), 'error');
@@ -60,6 +56,7 @@ var app = {
 
     loadUser: function () {
         app.user = storage.getItem('user');
+        console.log('logged in as: ' + app.user);
     },
     validateUser: function (newUser) {
         // TODO make api call to verify token

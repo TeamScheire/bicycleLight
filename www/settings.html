@@ -50,7 +50,9 @@
             document.getElementById('settings-port').value = mqttSettings.port;
             document.getElementById('settings-clientid').value = mqttSettings.clientid;
             document.getElementById('settings-topic').value = mqttSettings.topic;
+        };
 
+        ons.getScriptPage().onInit = function () {
             $('#settings').on('click', '.savebutton', function (e) {
                 var newSettings = {
                     host: $('#settings-host').val(),
@@ -61,6 +63,13 @@
 
                 if (mqtt.validateSettings(newSettings)) {
                     mqtt.saveSettings(newSettings);
+                    if (mqtt.connected) {
+                        mqtt.disconnect();
+                    }
+                    window.setTimeout(function() {
+                        mqtt.initialize();
+                    }, 1000);
+
                     ons.notification.alert({
                         message: 'New settings saved.',
                         title: 'Settings'
@@ -89,6 +98,6 @@
                     });
                 }
             });
-        }
+        };
     </script>
 </ons-page>

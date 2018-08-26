@@ -1,7 +1,7 @@
 <ons-page id="activity">
     <ons-list>
         <ons-list-header>Sent messages</ons-list-header>
-        <div id="sentMessage">
+        <div id="sentMessages">
             <ons-list-item>
                 <em>no messages sent yet</em>
             </ons-list-item>
@@ -13,13 +13,15 @@
         <ons-list-item class="showOnMqttConnected debug">
             <ons-button id="mqttSendTest">Send Mqtt Test Message</ons-button>
             <ons-button id="mqttDisconnect">Disconnect Mqtt</ons-button>
-            
+
         </ons-list-item>
     </ons-list>
     <script>
         ons.getScriptPage().onShow = function () {
             mqtt.toggleConnectionButtons();
+        };
 
+        ons.getScriptPage().onInit = function () {
             $('#activity').on('click', '#mqttConnect', function (e) {
                 mqtt.connect();
             });
@@ -30,6 +32,6 @@
                 var data = 'testmessage';
                 mqtt.sendMessage(data);
             });
-        }
+        };
     </script>
 </ons-page>

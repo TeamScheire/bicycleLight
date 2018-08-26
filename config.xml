@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="be.postduif.bicyclelight" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="be.postduif.bicyclelight" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>bicycleLight</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+       A companion app for the bluetooth smart bicycle light
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="kurt@postduif.be" href="http://www.postduif.be">
+        Kurt Beheydt
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -22,6 +22,18 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="BackupWebStorage" value="local" />
+        <config-file parent="UIBackgroundModes" target="*-Info.plist">
+            <array>
+                <string>bluetooth-central</string>
+            </array>
+        </config-file>
     </platform>
-    <engine name="ios" spec="^4.5.4" />
+    <plugin name="cordova-plugin-ble-central" spec="^1.2.0">
+        <variable name="TEXT" value="Connecting to a ble bicycle light." />
+    </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
+    <engine name="ios" spec="^4.5.5" />
 </widget>
