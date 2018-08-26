@@ -4,6 +4,11 @@ var app = {
     initialize: function () {
         console.log('app initialize');
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+/*
+        ons.ready(function () {
+            app.onDeviceReady();
+        });
+        */
     },
 
     onDeviceReady: function () {
@@ -12,7 +17,7 @@ var app = {
         app.loadUser();
         mqtt.initialize();
         gps.getLocation();
-        //bluetooth.initialize();
+        bluetooth.initialize();
     },
 
     bindEvents: function () {
@@ -23,19 +28,6 @@ var app = {
         document.addEventListener("pause", app.onDevicePause, false);
         document.addEventListener("resume", app.onDeviceResume, false);
         document.addEventListener("menubutton", app.onMenuKeyDown, false);
-
-        /*
-                $(document).on('click', '#refreshDeviceList', function (e) {
-                    bluetooth.refreshDeviceList(false);
-                });
-                $('#deviceList').on('click', 'li', function (e) {
-                    bluetooth.connectDevice($(this).attr("data-device-id"), $(this).attr("data-device-name"));
-                });
-                $(document).on('click', '#disconnectDevice', function (e) {
-                    bluetooth.disconnectDevice(e);
-                });
-                */
-
     },
 
     onDevicePause: function () {
