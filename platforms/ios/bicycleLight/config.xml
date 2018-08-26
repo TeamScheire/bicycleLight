@@ -50,6 +50,12 @@
     <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
         <string>we want to connect with a smart bicycle light</string>
     </config-file>
+    <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+        <string>we want to add a gps location to your notification</string>
+    </config-file>
+    <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+        <string>we want to add a gps location to your notification</string>
+    </config-file>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="local" />
     <preference name="DisallowOverscroll" value="false" />

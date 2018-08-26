@@ -33,11 +33,8 @@
         </config-file>
         <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
             <string>we want to add a gps location to your notification</string>
-        </config-file>        
+        </config-file>
         <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
-            <string>we want to add a gps location to your notification</string>
-        </config-file>        
-        <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
             <string>we want to add a gps location to your notification</string>
         </config-file>
     </platform>
