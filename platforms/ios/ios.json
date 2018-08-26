@@ -10,7 +10,7 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 21
+              "count": 22
             }
           ],
           "NSBluetoothPeripheralUsageDescription": [
@@ -20,6 +20,18 @@
             },
             {
               "xml": "<string>we want to connect with a smart bicycle light</string>",
+              "count": 2
+            }
+          ],
+          "NSLocationAlwaysAndWhenInUseUsageDescription": [
+            {
+              "xml": "<string>we want to add a gps location to your notification</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationAlwaysUsageDescription": [
+            {
+              "xml": "<string>we want to add a gps location to your notification</string>",
               "count": 1
             }
           ]
