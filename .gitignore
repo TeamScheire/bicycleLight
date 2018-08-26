@@ -45,3 +45,5 @@ buck-out/
 *.jsbundle
 plugins
 platforms/browser
+platforms/ios/bicycleLight.xcarchive
+platforms/ios/www

@@ -1,16 +1,17 @@
 var mqtt = {
-    defaultSettings: {
+    settings: {
         host: 'cot-dyamand-dev.tengu.io',
         port: '8883',
         clientid: 'maaktnietuit',
         topic: 'deviceid'
     },
-    settings: {
+    defaultSettings: {
         host: 'test.mosquitto.org',
         port: '8080',
         clientid: 'bicycleTestClient2S',
-        topic: 'bell/1'
+        topic: 'bell'
     },
+    isConnecting: false,
     connected: false,
     connectionOptions: {
         timeout: 3,
@@ -19,9 +20,12 @@ var mqtt = {
             mqtt.connected = false;
         }
     },
+    messages: [],
     initialize: function () {
         debug.log('Initialising mqtt ...');
         mqtt.loadSettings();
+
+        mqtt.client = false;
 
         try {
             mqtt.client = new Paho.MQTT.Client(mqtt.settings.host, parseInt(mqtt.settings.port), mqtt.settings.clientid);
@@ -36,22 +40,29 @@ var mqtt = {
         }
     },
     connect: function () {
-        debug.log("Mqtt client is connecting...");
-        try {
-            mqtt.client.connect(mqtt.connectionOptions);
-            debug.log('Mqtt client connected', 'success');
-        } catch (exception) {
-            debug.log('Mqtt client connecting failed', 'error');
-            console.log(exception);
+        if (!mqtt.isConnecting) {
+            debug.log("Mqtt client is connecting...");
+            mqtt.isConnecting = true;
+            try {
+                mqtt.client.connect(mqtt.connectionOptions);
+                debug.log('Mqtt client connected', 'success');
+            } catch (exception) {
+                debug.log('Mqtt client connecting failed', 'error');
+                mqtt.connected = false;
+                mqtt.isConnecting = false;
+                console.log(exception);
+            }
         }
     },
     onConnected: function () {
         mqtt.connected = true;
+        mqtt.isConnecting = false;
         mqtt.toggleConnectionButtons();
         console.log("mqtt connection succesfull");
     },
     onConnectionLost: function (responseObject) {
         mqtt.connected = false;
+        mqtt.isConnecting = false;
         mqtt.toggleConnectionButtons();
         console.log("mqtt connection lost: " + responseObject.errorMessage);
     },
@@ -76,31 +87,65 @@ var mqtt = {
             $('.showOnMqttConnected').hide();
         }
     },
+    refreshSentMessageList: function () {
+        $('#sentMessages').empty();
+
+        if (mqtt.messages.length > 10) {
+            mqtt.messages.shift();
+        }
+
+        $.each(mqtt.messages, function (index, data) {
+            var messageLine = '<ons-list-item>' +
+                '<span class="list-item__title">' + data.data + '</span>' +
+                '<span class="list-item__subtitle" style="color: ' + ((data.status) ? 'green' : 'red') + ';">' + data.timestamp + '</span>' +
+                '</ons-list-item>';
+
+            $('#sentMessages').prepend(messageLine);
+        });
+
+    },
     sendMessage: function (data) {
+        gps.getLocation();
+        var status = false;
+        var sent = false;
+
+        var userid = (app.user.userName !== undefined) ? app.user.userName : 'no-user';
+
         payload = {
             type: "idlab-iot-ingest", // TODO: add ble device id
-            entityId: app.user.userName,
+            entityId: userid,
             timestamp: moment().unix(),
-            geoloc: {           
-                lat: 0,
-                lng: 0
-            },
+            geoloc: gps.coords,
             payload: data
         };
 
         message = JSON.stringify(payload);
+
         message = new Paho.MQTT.Message(message);
         message.destinationName = mqtt.settings.topic;
 
         try {
             mqtt.client.send(message);
             debug.log('Mqtt Message sent', 'success');
-            return true;
+            sent = true;
+            status = true;
         } catch (exception) {
             debug.log('Mqtt sendMessage failed', 'error');
             console.log(exception);
-            return false;
+            sent = false;
+            status = false;
         }
+
+        mqtt.messages.push({
+            data: data,
+            timestamp: moment().format(),
+            sent: sent,
+            status: status
+        });
+
+        mqtt.refreshSentMessageList();
+
+        return status;
     },
 
     loadSettings: function () {

@@ -4,16 +4,103 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "*-Info.plist": {
+        "parents": {
+          "UIBackgroundModes": [
+            {
+              "xml": "<array><string>bluetooth-central</string></array>",
+              "count": 10
+            }
+          ],
+          "NSBluetoothPeripheralUsageDescription": [
+            {
+              "xml": "<string> </string>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "config.xml": {
+        "parents": {
+          "/widget": [
+            {
+              "xml": "<feature name=\"BLE\"><param name=\"ios-package\" onload=\"true\" value=\"BLECentralPlugin\" /></feature>",
+              "count": 1
+            }
+          ],
+          "/*": [
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
   "installed_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "be.postduif.bicyclelight"
+    },
+    "cordova-plugin-ble-central": {
+      "BLUETOOTH_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "be.postduif.bicyclelight"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "be.postduif.bicyclelight"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "be.postduif.bicyclelight"
     }
   },
   "dependent_plugins": {},
-  "modules": [],
+  "modules": [
+    {
+      "id": "cordova-plugin-ble-central.ble",
+      "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+      "pluginId": "cordova-plugin-ble-central",
+      "clobbers": [
+        "ble"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Coordinates"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    }
+  ],
   "plugin_metadata": {
+    "cordova-plugin-compat": "1.2.0",
+    "cordova-plugin-ble-central": "1.2.2",
+    "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-whitelist": "1.3.3"
   }
 }

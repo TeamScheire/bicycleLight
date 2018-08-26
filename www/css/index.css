@@ -143,6 +143,11 @@ h1 {
     margin: 3px auto;
 }
 
+.list-item__title {
+    font-size: 18px;
+    line-height: 25px;
+}
+
 img {
     max-width: 100%;
     height: auto;

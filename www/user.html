@@ -28,10 +28,16 @@
             <ons-button id="logout">log out</ons-button>
         </ons-card>
     </div>
+    <ons-card>
+        <p>Gps-data</p>
+        <div id="geolocation">no gps data yet</div>
+    </ons-card>
     <script>
         ons.getScriptPage().onShow = function () {
             app.checkIfUserLoggedIn();
+        };
 
+        ons.getScriptPage().onInit = function () {
             $('#user').on('click', '.savebutton', function (e) {
                 console.log('savebutton clicked');
                 var newUser = {
@@ -66,6 +72,6 @@
                 }
                 app.checkIfUserLoggedIn();
             });
-        }
+        };
     </script>
 </ons-page>
