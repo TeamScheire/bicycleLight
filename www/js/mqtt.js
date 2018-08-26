@@ -90,7 +90,7 @@ var mqtt = {
     refreshSentMessageList: function () {
         $('#sentMessages').empty();
 
-        if (mqtt.messages.length > 10) {
+        if (mqtt.messages.length > 20) {
             mqtt.messages.shift();
         }
 
@@ -103,6 +103,9 @@ var mqtt = {
             $('#sentMessages').prepend(messageLine);
         });
 
+    },
+    addMessage: function(deviceId, data) {
+        mqtt.sendMessage(data);
     },
     sendMessage: function (data) {
         gps.getLocation();
@@ -120,9 +123,8 @@ var mqtt = {
         };
 
         message = JSON.stringify(payload);
-
         message = new Paho.MQTT.Message(message);
-        message.destinationName = mqtt.settings.topic;
+        message.destinationName = (bluetooth.connectDevice.id !== undefined) ? bluetooth.connectDevice.id : mqtt.settings.topic;
 
         try {
             mqtt.client.send(message);

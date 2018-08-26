@@ -10,7 +10,7 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 10
+              "count": 19
             }
           ],
           "NSBluetoothPeripheralUsageDescription": [

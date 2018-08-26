@@ -138,7 +138,7 @@ h1 {
     padding-top: 20px;
 }
 
-.debug .button {
+.debug .button, .general .button {
     display: block;
     margin: 3px auto;
 }
