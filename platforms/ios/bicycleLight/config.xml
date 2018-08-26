@@ -47,6 +47,9 @@
             <string>bluetooth-central</string>
         </array>
     </config-file>
+    <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
+        <string>we want to connect with a smart bicycle light</string>
+    </config-file>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="local" />
     <preference name="DisallowOverscroll" value="false" />

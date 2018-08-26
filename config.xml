@@ -28,12 +28,18 @@
                 <string>bluetooth-central</string>
             </array>
         </config-file>
+        <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
+            <string>we want to connect with a smart bicycle light</string>
+        </config-file>
+        <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+            <string>we want to add a gps location to your notification</string>
+        </config-file>        
+        <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+            <string>we want to add a gps location to your notification</string>
+        </config-file>        
+        <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+            <string>we want to add a gps location to your notification</string>
+        </config-file>
     </platform>
-    <plugin name="cordova-plugin-ble-central" spec="^1.2.0">
-        <variable name="TEXT" value="Connecting to a ble bicycle light." />
-    </plugin>
-    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
-        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
-    </plugin>
     <engine name="ios" spec="^4.5.5" />
 </widget>

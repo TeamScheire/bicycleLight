@@ -10,12 +10,16 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 19
+              "count": 21
             }
           ],
           "NSBluetoothPeripheralUsageDescription": [
             {
               "xml": "<string> </string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>we want to connect with a smart bicycle light</string>",
               "count": 1
             }
           ]
