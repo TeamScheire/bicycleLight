@@ -29,14 +29,17 @@
             </array>
         </config-file>
         <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
-            <string>we want to connect with a smart bicycle light</string>
+            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
         </config-file>
         <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
-            <string>we want to add a gps location to your notification</string>
+            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
         </config-file>
         <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
-            <string>we want to add a gps location to your notification</string>
+            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
         </config-file>
     </platform>
+    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5">
+        <variable name="ALWAYS_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+    </plugin>
     <engine name="ios" spec="^4.5.5" />
 </widget>

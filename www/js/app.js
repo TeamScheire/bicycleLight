@@ -16,6 +16,7 @@ var app = {
         app.bindEvents();
         app.loadUser();
         mqtt.initialize();
+        gps.initialize();
         gps.getLocation();
         bluetooth.initialize();
     },
@@ -32,14 +33,17 @@ var app = {
 
     onDevicePause: function () {
         debug.log('in pause');
+        backgroundGeolocation.start();
         mqtt.sendMessage('app,2');
     },
     onDeviceResume: function () {
         debug.log('out of pause');
+        backgroundGeolocation.stop();
         mqtt.sendMessage('app,3');
     },
     onMenuKeyDown: function () {
         debug.log('menubuttonpressed');
+        backgroundGeolocation.start();
         mqtt.sendMessage('app,4');
     },
     onError: function (error) {
@@ -52,7 +56,8 @@ var app = {
     },
     validateUser: function (newUser) {
         // TODO make api call to verify token
-        newUser.userName = 'testuser01';
+//        newUser.userName = 'testuser01';
+        newUser.userName = newUser.token;
         return newUser;
     },
     saveUser: function (newUser) {

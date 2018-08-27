@@ -10,7 +10,11 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 22
+              "count": 24
+            },
+            {
+              "xml": "<array><string>location</string></array>",
+              "count": 1
             }
           ],
           "NSBluetoothPeripheralUsageDescription": [
@@ -21,17 +25,49 @@
             {
               "xml": "<string>we want to connect with a smart bicycle light</string>",
               "count": 2
+            },
+            {
+              "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
+              "count": 2
             }
           ],
           "NSLocationAlwaysAndWhenInUseUsageDescription": [
             {
               "xml": "<string>we want to add a gps location to your notification</string>",
               "count": 1
+            },
+            {
+              "xml": "<string>This app always requires location tracking</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
+              "count": 2
             }
           ],
           "NSLocationAlwaysUsageDescription": [
             {
               "xml": "<string>we want to add a gps location to your notification</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>This app always requires location tracking</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
+              "count": 2
+            }
+          ],
+          "NSLocationWhenInUseUsageDescription": [
+            {
+              "xml": "<string>This app always requires location tracking</string>",
+              "count": 1
+            }
+          ],
+          "CFBundleURLTypes": [
+            {
+              "xml": "<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLSchemes</key><array><string>prefs</string></array></dict></array>",
               "count": 1
             }
           ]
@@ -48,6 +84,10 @@
           "/*": [
             {
               "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"BackgroundGeolocation\"><param name=\"ios-package\" value=\"CDVBackgroundGeolocation\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -67,6 +107,10 @@
       "PACKAGE_NAME": "be.postduif.bicyclelight"
     },
     "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "be.postduif.bicyclelight"
+    },
+    "cordova-plugin-mauron85-background-geolocation": {
+      "ALWAYS_USAGE_DESCRIPTION": "This app always requires location tracking",
       "PACKAGE_NAME": "be.postduif.bicyclelight"
     }
   },
@@ -111,12 +155,21 @@
       "clobbers": [
         "navigator.geolocation"
       ]
+    },
+    {
+      "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
+      "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
+      "pluginId": "cordova-plugin-mauron85-background-geolocation",
+      "clobbers": [
+        "backgroundGeolocation"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-ble-central": "1.2.2",
     "cordova-plugin-geolocation": "4.0.1",
-    "cordova-plugin-whitelist": "1.3.3"
+    "cordova-plugin-whitelist": "1.3.3",
+    "cordova-plugin-mauron85-background-geolocation": "2.3.5"
   }
 }

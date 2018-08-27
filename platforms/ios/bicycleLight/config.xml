@@ -25,6 +25,10 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="BackgroundGeolocation">
+        <param name="ios-package" value="CDVBackgroundGeolocation" />
+        <param name="onload" value="true" />
+    </feature>
     <name>bicycleLight</name>
     <description>
        A companion app for the bluetooth smart bicycle light
@@ -48,13 +52,13 @@
         </array>
     </config-file>
     <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
-        <string>we want to connect with a smart bicycle light</string>
+        <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     </config-file>
     <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
-        <string>we want to add a gps location to your notification</string>
+        <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     </config-file>
     <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
-        <string>we want to add a gps location to your notification</string>
+        <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     </config-file>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="local" />
