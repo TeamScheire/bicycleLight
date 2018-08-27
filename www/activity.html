@@ -30,7 +30,7 @@
             });
             $('#activity').on('click', '#mqttSendTest', function (e) {
                 var data = 'testmessage';
-                mqtt.sendMessage(data);
+                mqtt.addMessage(data);
             });
         };
     </script>

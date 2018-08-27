@@ -23,7 +23,7 @@ var app = {
 
     bindEvents: function () {
         setTimeout(function () {
-            mqtt.sendMessage('app,1');
+            mqtt.addMessage('app,1');
         }, 3000);
 
         document.addEventListener("pause", app.onDevicePause, false);
@@ -34,17 +34,17 @@ var app = {
     onDevicePause: function () {
         debug.log('in pause');
         backgroundGeolocation.start();
-        mqtt.sendMessage('app,2');
+        mqtt.addMessage('app,2');
     },
     onDeviceResume: function () {
         debug.log('out of pause');
         backgroundGeolocation.stop();
-        mqtt.sendMessage('app,3');
+        mqtt.addMessage('app,3');
     },
     onMenuKeyDown: function () {
         debug.log('menubuttonpressed');
         backgroundGeolocation.start();
-        mqtt.sendMessage('app,4');
+        mqtt.addMessage('app,4');
     },
     onError: function (error) {
         debug.log(JSON.stringify(error), 'error');

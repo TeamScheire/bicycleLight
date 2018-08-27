@@ -24,6 +24,17 @@
     <string>0.0.1</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>prefs</string>
+        </array>
+      </dict>
+    </array>
     <key>CFBundleVersion</key>
     <string>0.0.1</string>
     <key>LSRequiresIPhoneOS</key>
@@ -34,6 +45,8 @@
       <true/>
     </dict>
     <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
@@ -62,19 +75,6 @@
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>prefs</string>
-        </array>
-      </dict>
     </array>
   </dict>
 </plist>
