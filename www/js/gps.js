@@ -4,14 +4,35 @@ var gps = {
         lng: 0,
         acc: 0
     },
+    initialize: function () {
+        backgroundGeolocation.configure(gps.onBackgroundInitSuccess, gps.onBackgroundInitFailure, {
+            desiredAccuracy: 10,
+            stationaryRadius: 20,
+            distanceFilter: 30,
+            interval: 60000
+        });
+
+        backgroundGeolocation.start();
+    },
+    onBackgroundInitSuccess: function (location) {
+        gps.coords = {
+            lat: location.latitude,
+            lng: location.longitude,
+            acc: location.accuracy
+        }
+        debug.log(gps.coords);
+    },
+    onBackgroundInitFailure: function (error) {
+        debug.log('background gps failure');
+        console.log(error);
+    },
     getLocation: function () {
-        //try {
+        try {
             navigator.geolocation.getCurrentPosition(gps.onSuccess, app.onError);
-        /*
-    } catch (exception) {
+        } catch (exception) {
             debug.log('gps fetch failed', 'error');
             console.log(exception);
-        }*/
+        }
     },
     onSuccess: function (position) {
         console.log(position.coords);

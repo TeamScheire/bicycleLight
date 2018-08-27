@@ -104,10 +104,13 @@ var mqtt = {
         });
 
     },
-    addMessage: function(deviceId, data) {
+    addMessage: function (deviceId, data) {
         mqtt.sendMessage(data);
     },
     sendMessage: function (data) {
+        // TODO check for mqtt connectivity, if not: add to message queue
+
+
         gps.getLocation();
         var status = false;
         var sent = false;

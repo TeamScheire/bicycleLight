@@ -34,13 +34,11 @@
       <true/>
     </dict>
     <key>NSBluetoothPeripheralUsageDescription</key>
-    <string>we want to connect with a smart bicycle light</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>we want to add a gps location to your notification</string>
+    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>we want to add a gps location to your notification</string>
+    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>we want to add a gps location to your notification</string>
+    <string>This app always requires location tracking</string>
     <key>NSMainNibFile</key>
     <string/>
     <key>NSMainNibFile~ipad</key>
@@ -64,6 +62,19 @@
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>prefs</string>
+        </array>
+      </dict>
     </array>
   </dict>
 </plist>
