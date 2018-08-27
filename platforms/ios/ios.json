@@ -10,7 +10,7 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 24
+              "count": 33
             },
             {
               "xml": "<array><string>location</string></array>",
@@ -28,7 +28,7 @@
             },
             {
               "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
-              "count": 2
+              "count": 11
             }
           ],
           "NSLocationAlwaysAndWhenInUseUsageDescription": [
@@ -42,7 +42,7 @@
             },
             {
               "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
-              "count": 2
+              "count": 11
             }
           ],
           "NSLocationAlwaysUsageDescription": [
@@ -56,7 +56,7 @@
             },
             {
               "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
-              "count": 2
+              "count": 11
             }
           ],
           "NSLocationWhenInUseUsageDescription": [

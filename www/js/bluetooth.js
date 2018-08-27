@@ -62,7 +62,7 @@ var bluetooth = {
                 bluetooth.onError);
 
             debug.log('Connected to ' + deviceId, 'success');
-            mqtt.addMessage(bluetooth.connectedDevice.id, 'device,1');
+            mqtt.addMessage('device,1');
 
             //bluetooth.heartbeatInterval = setInterval(bluetooth.heartbeat, 5000);
             bluetooth.toggleConnectionButtons();
@@ -74,10 +74,9 @@ var bluetooth = {
         if (bluetooth.connectedDevice) {
             try {
                 ble.isConnected(bluetooth.connectedDevice.id, function () {
-                    debug.log('still connected');
-                    mqtt.addMessage(bluetooth.connectedDevice.id, 'heartbeat,1');
+                    mqtt.addMessage('heartbeat,1');
                 }, function () {
-                    mqtt.addMessage(bluetooth.lastConnectedDeviceId, 'device,0');
+                    mqtt.addMessage('device,0');
                     debug.log('Automatically disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
                     bluetooth.connectedDevice = {};
                     clearInterval(bluetooth.heartbeatInterval);
@@ -89,7 +88,7 @@ var bluetooth = {
     },
     onDisconnectDevice: function () {
         storage.removeItem('connectedDevice');
-        mqtt.addMessage(bluetooth.lastConnectedDeviceId, 'device,0');
+        mqtt.addMessage('device,0');
         debug.log('Disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
         bluetooth.connectedDevice = {};
         clearInterval(bluetooth.heartbeatInterval);
@@ -107,7 +106,7 @@ var bluetooth = {
         }
     },
     onData: function (data) {
-        mqtt.addMessage(bluetooth.connectedDevice.id, bytesToString(data));
+        mqtt.addMessage(bytesToString(data));
 
         bluetooth.messages.push({
             data: bytesToString(data),
@@ -124,7 +123,7 @@ var bluetooth = {
             debug.log('error, but still connected');
         }, function () {
             bluetooth.connectedDevice = {};
-            mqtt.addMessage(bluetooth.lastConnectedDeviceId, 'device,0');
+            mqtt.addMessage('device,0');
             debug.log('error and disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
             clearInterval(bluetooth.heartbeatInterval);
             app.showMainPage();
@@ -132,7 +131,7 @@ var bluetooth = {
     },
     toggleConnectionButtons: function () {
         var connected = (bluetooth.connectedDevice.id !== undefined);
-        debug.log('current ble connection status: ' + ((connected) ? 'connected' : 'not connected'));
+        console.log('current ble connection status: ' + ((connected) ? 'connected' : 'not connected'));
 
         if (connected) {
             var html = '<ons-list-item>' +

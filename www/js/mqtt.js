@@ -20,7 +20,9 @@ var mqtt = {
             mqtt.connected = false;
         }
     },
+    messageQueue: [],
     messages: [],
+    messagesLength: 20,
     initialize: function () {
         debug.log('Initialising mqtt ...');
         mqtt.loadSettings();
@@ -59,6 +61,7 @@ var mqtt = {
         mqtt.isConnecting = false;
         mqtt.toggleConnectionButtons();
         console.log("mqtt connection succesfull");
+        mqtt.sendMessageQueue();
     },
     onConnectionLost: function (responseObject) {
         mqtt.connected = false;
@@ -90,7 +93,7 @@ var mqtt = {
     refreshSentMessageList: function () {
         $('#sentMessages').empty();
 
-        if (mqtt.messages.length > 20) {
+        if (mqtt.messages.length > mqtt.messagesLength) {
             mqtt.messages.shift();
         }
 
@@ -104,55 +107,65 @@ var mqtt = {
         });
 
     },
-    addMessage: function (deviceId, data) {
-        mqtt.sendMessage(data);
-    },
-    sendMessage: function (data) {
-        // TODO check for mqtt connectivity, if not: add to message queue
-
-
+    addMessage: function (data) {
         gps.getLocation();
-        var status = false;
-        var sent = false;
 
-        var userid = (app.user.userName !== undefined) ? app.user.userName : 'no-user';
+        var userId = (app.user.userName !== undefined) ? app.user.userName : 'nouser';
+        var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
-        payload = {
-            type: "idlab-iot-ingest", // TODO: add ble device id
-            entityId: userid,
+        var payload = {
+            type: "idlab-iot-ingest",
+            entityId: userId,
+            deviceId: deviceId,
             timestamp: moment().unix(),
             geoloc: gps.coords,
             payload: data
         };
 
-        message = JSON.stringify(payload);
-        message = new Paho.MQTT.Message(message);
-        message.destinationName = (bluetooth.connectDevice.id !== undefined) ? bluetooth.connectDevice.id : mqtt.settings.topic;
+        mqtt.messageQueue.push(payload);
 
+        if (mqtt.connected) {
+            mqtt.sendMessageQueue();
+        } else {
+            mqtt.connect();
+        }
+    },
+    sendMessage(payload) {
         try {
+            console.log("----payload---");
+            console.log(payload);
+            message = JSON.stringify(payload);
+            message = new Paho.MQTT.Message(message);
+            message.destinationName = payload.deviceId;
+
             mqtt.client.send(message);
             debug.log('Mqtt Message sent', 'success');
-            sent = true;
-            status = true;
+
+            mqtt.messages.push({
+                data: payload.payload,
+                timestamp: moment().format(),
+                status: true
+            });
+            if (mqtt.messages.length > mqtt.messagesLength) {
+                mqtt.messages.shift();
+            }
+            return true;
         } catch (exception) {
-            debug.log('Mqtt sendMessage failed', 'error');
+            debug.log('Mqtt send Message failed', 'error');
             console.log(exception);
-            sent = false;
-            status = false;
+            return false;
         }
-
-        mqtt.messages.push({
-            data: data,
-            timestamp: moment().format(),
-            sent: sent,
-            status: status
-        });
-
-        mqtt.refreshSentMessageList();
-
-        return status;
     },
-
+    sendMessageQueue: function () {
+        if (mqtt.connected) {
+            $.each(mqtt.messageQueue, function (index, payload) {
+                if (mqtt.sendMessage(payload)) {
+                    mqtt.messageQueue.splice(index, 1);
+                }
+            });
+        }
+        mqtt.refreshSentMessageList();
+    },
     loadSettings: function () {
         mqtt.settings = storage.getItem('mqttSettings', mqtt.defaultSettings);
         return mqtt.settings;
