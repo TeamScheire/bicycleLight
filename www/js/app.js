@@ -4,11 +4,11 @@ var app = {
     initialize: function () {
         console.log('app initialize');
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-/*
-        ons.ready(function () {
-            app.onDeviceReady();
-        });
-        */
+        /*
+                ons.ready(function () {
+                    app.onDeviceReady();
+                });
+                */
     },
 
     onDeviceReady: function () {
@@ -33,17 +33,16 @@ var app = {
 
     onDevicePause: function () {
         debug.log('in pause');
-        backgroundGeolocation.start();
+        bluetooth.refreshDeviceList();
         mqtt.addMessage('app,2');
     },
     onDeviceResume: function () {
         debug.log('out of pause');
-        backgroundGeolocation.stop();
+        bluetooth.refreshDeviceList();
         mqtt.addMessage('app,3');
     },
     onMenuKeyDown: function () {
         debug.log('menubuttonpressed');
-        backgroundGeolocation.start();
         mqtt.addMessage('app,4');
     },
     onError: function (error) {
@@ -56,7 +55,7 @@ var app = {
     },
     validateUser: function (newUser) {
         // TODO make api call to verify token
-//        newUser.userName = 'testuser01';
+        //        newUser.userName = 'testuser01';
         newUser.userName = newUser.token;
         return newUser;
     },

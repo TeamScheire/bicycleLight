@@ -28,21 +28,19 @@ var gps = {
     },
     getLocation: function (onSuccessCallback) {
         backgroundGeolocation.getLocations(function (locations) {
-                gps.coords = locations[locations.length - 1];
-                gps.coords.lat = gps.coords.latitude;
-                gps.coords.lng = gps.coords.longitude;
-                gps.coords.acc = gps.coords.accuracy;
-                gps.showLocation();
-                gps.onSuccess();
+            gps.coords = locations[locations.length - 1];
+            gps.coords.lat = gps.coords.latitude;
+            gps.coords.lng = gps.coords.longitude;
+            gps.coords.acc = gps.coords.accuracy;
+            gps.showLocation();
 
-                if (typeof (onSuccessCallback) === 'function') {
-                    onSuccessCallback();
-                }
-            }, function (error) {
-                debug.log('background gps getLocations failure');
-                console.log(error);
+            if (typeof (onSuccessCallback) === 'function') {
+                onSuccessCallback();
             }
-        );
+        }, function (error) {
+            debug.log('background gps getLocations failure');
+            console.log(error);
+        });
     },
     showLocation: function () {
         console.log('-----location showed:-----');
@@ -54,9 +52,5 @@ var gps = {
             'Altitude Accuracy: ' + gps.coords.altitudeAccuracy + '<br />' +
             'Heading: ' + gps.coords.heading + '<br />' +
             'Speed: ' + gps.coords.speed + '<br />');
-    },
-    onSuccess: function () {
-        console.log('-----getLocations location success:-----');
-        console.log(gps.coords);
     }
 }

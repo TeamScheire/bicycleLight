@@ -11,7 +11,7 @@ var bluetooth = {
     messages: [],
     initialize: function () {
         debug.log('Initialising bluetooth ...');
-        //bluetooth.refreshDeviceList();
+        bluetooth.refreshDeviceList();
         debug.log('Bluetooth Initialised', 'success');
     },
     refreshDeviceList: function () {
