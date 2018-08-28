@@ -92,7 +92,7 @@ var bluetooth = {
         debug.log('Disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
         bluetooth.connectedDevice = {};
         clearInterval(bluetooth.heartbeatInterval);
-        app.showMainPage();
+        bluetooth.toggleConnectionButtons()();
     },
     disconnectDevice: function (event) {
         debug.log('Disconnecting from ' + bluetooth.connectedDevice.id);
@@ -126,7 +126,7 @@ var bluetooth = {
             mqtt.addMessage('device,0');
             debug.log('error and disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
             clearInterval(bluetooth.heartbeatInterval);
-            app.showMainPage();
+            bluetooth.toggleConnectionButtons()();
         });
     },
     toggleConnectionButtons: function () {
