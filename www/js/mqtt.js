@@ -108,27 +108,27 @@ var mqtt = {
 
     },
     addMessage: function (data) {
-        gps.getLocation();
-
-        var userId = (app.user.userName !== undefined) ? app.user.userName : 'nouser';
-        var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
-
-        var payload = {
-            type: "idlab-iot-ingest",
-            entityId: userId,
-            deviceId: deviceId,
-            timestamp: moment().unix(),
-            geoloc: gps.coords,
-            payload: data
-        };
-
-        mqtt.messageQueue.push(payload);
-
-        if (mqtt.connected) {
-            mqtt.sendMessageQueue();
-        } else {
-            mqtt.connect();
-        }
+        gps.getLocation(function() {
+            var userId = (app.user.userName !== undefined) ? app.user.userName : 'nouser';
+            var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
+            
+            var payload = {
+                type: "idlab-iot-ingest",
+                entityId: userId,
+                deviceId: deviceId,
+                timestamp: moment().unix(),
+                geoloc: gps.coords,
+                payload: data
+            };
+            
+            mqtt.messageQueue.push(payload);
+            
+            if (mqtt.connected) {
+                mqtt.sendMessageQueue();
+            } else {
+                mqtt.connect();
+            }
+        });
     },
     sendMessage(payload) {
         try {
