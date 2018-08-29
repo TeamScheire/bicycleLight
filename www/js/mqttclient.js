@@ -138,7 +138,7 @@ var mqttclient = {
         return mqttclient.settings;
     },
     validateSettings: function (newSettings) {
-        if ((newSettings.protocolId != 'TCP') || (newSettings.protocolId != 'MQTT')) {
+        if ((newSettings.protocolId != 'TCP') && (newSettings.protocolId != 'MQTT')) {
             newSettings.protocolId = 'MQTT';
         }
         return newSettings;
