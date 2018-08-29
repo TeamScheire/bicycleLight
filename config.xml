@@ -44,7 +44,6 @@
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5">
         <variable name="ALWAYS_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
     </plugin>
-    <plugin name="cordova-plugin-mqtt" spec="^0.3.8" />
-    <engine name="ios" spec="^4.5.5" />
     <engine name="browser" spec="^5.0.4" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>

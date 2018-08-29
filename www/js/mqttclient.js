@@ -6,9 +6,9 @@ var mqttclient = {
         protocolId: 'TCP'
     },
     defaultSettings: {
-        host: 'test.mosquitto.org', //becme.idlab.uantwerpen.be
-        port: '8080', //1883
-        clientId: 'bicycleTestClient',
+        host: 'becme.idlab.uantwerpen.be',
+        port: '9001',
+        clientId: 'becme',
         protocolId: 'MQTT'
     },
     client: false,
@@ -19,7 +19,7 @@ var mqttclient = {
     messagesLength: 20,
     initialize: function () {
         debug.log('Initialising mqtt ...');
-       // mqttclient.loadSettings();
+        mqttclient.loadSettings();
         mqttclient.client = false;
         mqttclient.isConnecting = false;
         mqttclient.connect();
@@ -34,7 +34,7 @@ var mqttclient = {
             try {
                 mqttclient.settings.clientId = 'becme-' + parseInt(Math.random() * 100, 10);
                 mqttclient.client = mqtt.connect(mqttclient.settings);
-                
+
                 mqttclient.client.on('connect', function () {
                     mqttclient.connected = true;
                     mqttclient.isConnecting = false;
@@ -66,15 +66,13 @@ var mqttclient = {
         var userId = (app.user !== undefined) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
-       // gps.getLocation(function () {
+        gps.getLocation(function () {
             var payload = {
                 timestamp: moment().unix(),
-                geoloc: {},//gps.coords,
-                payload: {
-                    entityId: 'blf.' + userId,
-                    data: data,
-                    deviceId: deviceId
-                }
+                geoloc: gps.coords,
+                entityId: 'blf.' + userId,
+                deviceId: deviceId,
+                payload: data
             };
 
             mqttclient.messageQueue.push(payload);
@@ -86,7 +84,7 @@ var mqttclient = {
             } else {
                 mqttclient.connect();
             }
-      //  });
+        });
     },
     sendMessageQueue: function () {
         if (mqttclient.connected) {
@@ -100,20 +98,17 @@ var mqttclient = {
     },
     sendMessage(payload) {
         try {
-            var message = {
-                type: "idlab-iot-ingest",
-                payload: JSON.stringify(payload)
-            }
+            var topic = 'becme'; // payload.payload.entityId
 
             console.log("----message to send---");
-            console.log('topic: ' + payload.payload.entityId);
-            console.log(message);
+            console.log('topic: ' + topic);
+            console.log(payload);
 
-            mqttclient.client.publish(payload.payload.entityId, JSON.stringify(message));
+            mqttclient.client.publish(topic, JSON.stringify(payload));
             debug.log('Mqtt Message sent', 'success');
 
             mqttclient.messages.push({
-                data: payload.payload.data,
+                data: payload.data,
                 timestamp: moment().format(),
                 status: true
             });
@@ -129,7 +124,6 @@ var mqttclient = {
     },
     loadSettings: function () {
         mqttclient.settings = storage.getItem('mqttSettings', mqttclient.defaultSettings);
-        //mqttclient.settings.protocolId = (mqttclient.settings.port == 8080) ? 'MQTT' : 'TCP'; 
         return mqttclient.settings;
     },
     validateSettings: function (newSettings) {
