@@ -70,7 +70,7 @@ var mqttclient = {
             var payload = {
                 timestamp: moment().unix(),
                 geoloc: gps.coords,
-                entityId: 'blf.' + userId,
+                entityId: userId, //'blf.' + userId,
                 deviceId: deviceId,
                 payload: data
             };
