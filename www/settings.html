@@ -27,10 +27,10 @@
         </ons-list-item>
         <ons-list-item class="input-items">
             <div class="left">
-                topic
+                protocol
             </div>
             <label class="center">
-                <ons-input id="settings-topic" float placeholder="mqtt topic"></ons-input>
+                <ons-input id="settings-protocolId" float placeholder="mqtt protocolId"></ons-input>
             </label>
         </ons-list-item>
         <ons-list-item>
@@ -44,12 +44,12 @@
     </ons-list>
     <script>
         ons.getScriptPage().onShow = function () {
-            mqttSettings = mqtt.loadSettings();
+            mqttSettings = mqttclient.loadSettings();
 
             document.getElementById('settings-host').value = mqttSettings.host;
             document.getElementById('settings-port').value = mqttSettings.port;
             document.getElementById('settings-clientid').value = mqttSettings.clientid;
-            document.getElementById('settings-topic').value = mqttSettings.topic;
+            document.getElementById('settings-protocolId').value = mqttSettings.protocolId;
         };
 
         ons.getScriptPage().onInit = function () {
@@ -58,16 +58,18 @@
                     host: $('#settings-host').val(),
                     port: $('#settings-port').val(),
                     clientid: $('#settings-clientid').val(),
-                    topic: $('#settings-topic').val()
+                    protocolId: $('#settings-protocolId').val()
                 };
 
-                if (mqtt.validateSettings(newSettings)) {
-                    mqtt.saveSettings(newSettings);
-                    if (mqtt.connected) {
-                        mqtt.disconnect();
+                newSettings = mqttclient.validateSettings(newSettings);
+                
+                if (newSettings) {
+                    mqttclient.saveSettings(newSettings);
+                    if (mqttclient.connected) {
+                        mqttclient.disconnect();
                     }
-                    window.setTimeout(function() {
-                        mqtt.initialize();
+                    window.setTimeout(function () {
+                        mqttclient.initialize();
                     }, 1000);
 
                     ons.notification.alert({

@@ -27,20 +27,26 @@ var gps = {
         console.log(error);
     },
     getLocation: function (onSuccessCallback) {
-        backgroundGeolocation.getLocations(function (locations) {
-            gps.coords = locations[locations.length - 1];
-            gps.coords.lat = gps.coords.latitude;
-            gps.coords.lng = gps.coords.longitude;
-            gps.coords.acc = gps.coords.accuracy;
-            gps.showLocation();
+        if (backgroundGeolocation !== 'undefined') {
+            backgroundGeolocation.getLocations(function (locations) {
+                gps.coords = locations[locations.length - 1];
+                gps.coords.lat = gps.coords.latitude;
+                gps.coords.lng = gps.coords.longitude;
+                gps.coords.acc = gps.coords.accuracy;
+                gps.showLocation();
 
+                if (typeof (onSuccessCallback) === 'function') {
+                    onSuccessCallback();
+                }
+            }, function (error) {
+                debug.log('background gps getLocations failure');
+                console.log(error);
+            });
+        } else {
             if (typeof (onSuccessCallback) === 'function') {
                 onSuccessCallback();
             }
-        }, function (error) {
-            debug.log('background gps getLocations failure');
-            console.log(error);
-        });
+        }
     },
     showLocation: function () {
         console.log('-----location showed:-----');
