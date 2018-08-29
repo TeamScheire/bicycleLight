@@ -14,7 +14,7 @@ var app = {
     onDeviceReady: function () {
         debug.log('device ready', 'success');
         app.bindEvents();
-        app.loadUser();
+        app.checkIfUserLoggedIn();
         mqtt.initialize();
         gps.initialize();
         gps.getLocation();
@@ -33,7 +33,6 @@ var app = {
 
     onDevicePause: function () {
         debug.log('in pause');
-        bluetooth.refreshDeviceList();
         mqtt.addMessage('app,2');
     },
     onDeviceResume: function () {
@@ -51,7 +50,7 @@ var app = {
 
     loadUser: function () {
         app.user = storage.getItem('user');
-        console.log('logged in as: ' + app.user);
+        console.log('logged in as: ' + Json.stringify(app.user));
     },
     validateUser: function (newUser) {
         // TODO make api call to verify token

@@ -1,14 +1,14 @@
 var mqtt = {
     settings: {
-        host: 'cot-dyamand-dev.tengu.io',
+        host: 'production.dyamand.tengu.io',
         port: '8883',
-        clientid: 'maaktnietuit',
+        clientid: 'blf.smartbicycle',
         topic: 'deviceid'
     },
     defaultSettings: {
         host: 'test.mosquitto.org',
         port: '8080',
-        clientid: 'bicycleTestClient2S',
+        clientid: 'bicycleTestClient',
         topic: 'bell'
     },
     isConnecting: false,
@@ -114,7 +114,7 @@ var mqtt = {
             
             var payload = {
                 type: "idlab-iot-ingest",
-                entityId: userId,
+                entityId: 'blf.' + userId,
                 deviceId: deviceId,
                 timestamp: moment().unix(),
                 geoloc: gps.coords,
