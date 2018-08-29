@@ -62,7 +62,7 @@ var bluetooth = {
                 bluetooth.onError);
 
             debug.log('Connected to ' + deviceId, 'success');
-            mqtt.addMessage('device,1');
+            mqttclient.addMessage('device,1');
 
             //bluetooth.heartbeatInterval = setInterval(bluetooth.heartbeat, 5000);
             bluetooth.toggleConnectionButtons();
@@ -74,9 +74,9 @@ var bluetooth = {
         if (bluetooth.connectedDevice) {
             try {
                 ble.isConnected(bluetooth.connectedDevice.id, function () {
-                    mqtt.addMessage('heartbeat,1');
+                    mqttclient.addMessage('heartbeat,1');
                 }, function () {
-                    mqtt.addMessage('device,0');
+                    mqttclient.addMessage('device,0');
                     debug.log('Automatically disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
                     bluetooth.connectedDevice = {};
                     clearInterval(bluetooth.heartbeatInterval);
@@ -88,7 +88,7 @@ var bluetooth = {
     },
     onDisconnectDevice: function () {
         storage.removeItem('connectedDevice');
-        mqtt.addMessage('device,0');
+        mqttclient.addMessage('device,0');
         debug.log('Disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
         bluetooth.connectedDevice = {};
         clearInterval(bluetooth.heartbeatInterval);
@@ -106,7 +106,7 @@ var bluetooth = {
         }
     },
     onData: function (data) {
-        mqtt.addMessage(bytesToString(data));
+        mqttclient.addMessage(bytesToString(data));
 
         bluetooth.messages.push({
             data: bytesToString(data),
@@ -123,7 +123,7 @@ var bluetooth = {
             debug.log('error, but still connected');
         }, function () {
             bluetooth.connectedDevice = {};
-            mqtt.addMessage('device,0');
+            mqttclient.addMessage('device,0');
             debug.log('error and disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
             clearInterval(bluetooth.heartbeatInterval);
             bluetooth.toggleConnectionButtons()();

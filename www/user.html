@@ -10,7 +10,7 @@
                     gebruikersnaam
                 </div>
                 <label class="center">
-                    <ons-input id="user-token" float placeholder="your token"></ons-input>
+                    <ons-input id="user-userName" float placeholder="your userName"></ons-input>
                 </label>
             </ons-list-item>
 
@@ -40,7 +40,7 @@
             $('#user').on('click', '.savebutton', function (e) {
                 console.log('savebutton clicked');
                 var newUser = {
-                    token: $('#user-token').val()
+                    userName: $('#user-userName').val()
                 };
 
                 newUser = app.validateUser(newUser)

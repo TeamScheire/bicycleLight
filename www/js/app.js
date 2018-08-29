@@ -1,21 +1,20 @@
 var app = {
     user: {},
-    // Application Constructor
     initialize: function () {
         console.log('app initialize');
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-        /*
-                ons.ready(function () {
-                    app.onDeviceReady();
-                });
-                */
+/*
+        ons.ready(function () {
+            app.onDeviceReady();
+        });
+*/
     },
 
     onDeviceReady: function () {
         debug.log('device ready', 'success');
         app.bindEvents();
         app.checkIfUserLoggedIn();
-        mqtt.initialize();
+        mqttclient.initialize();
         gps.initialize();
         gps.getLocation();
         bluetooth.initialize();
@@ -23,7 +22,7 @@ var app = {
 
     bindEvents: function () {
         setTimeout(function () {
-            mqtt.addMessage('app,1');
+            mqttclient.addMessage('app,1');
         }, 3000);
 
         document.addEventListener("pause", app.onDevicePause, false);
@@ -33,16 +32,16 @@ var app = {
 
     onDevicePause: function () {
         debug.log('in pause');
-        mqtt.addMessage('app,2');
+        mqttclient.addMessage('app,2');
     },
     onDeviceResume: function () {
         debug.log('out of pause');
         bluetooth.refreshDeviceList();
-        mqtt.addMessage('app,3');
+        mqttclient.addMessage('app,3');
     },
     onMenuKeyDown: function () {
         debug.log('menubuttonpressed');
-        mqtt.addMessage('app,4');
+        mqttclient.addMessage('app,4');
     },
     onError: function (error) {
         debug.log(JSON.stringify(error), 'error');
@@ -53,9 +52,7 @@ var app = {
         console.log('logged in as: ' + JSON.stringify(app.user));
     },
     validateUser: function (newUser) {
-        // TODO make api call to verify token
-        //        newUser.userName = 'testuser01';
-        newUser.userName = newUser.token;
+        newUser.userId = newUser.userName.toLowerCase();
         return newUser;
     },
     saveUser: function (newUser) {

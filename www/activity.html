@@ -18,19 +18,19 @@
     </ons-list>
     <script>
         ons.getScriptPage().onShow = function () {
-            mqtt.toggleConnectionButtons();
+            mqttclient.toggleConnectionButtons();
         };
 
         ons.getScriptPage().onInit = function () {
             $('#activity').on('click', '#mqttConnect', function (e) {
-                mqtt.connect();
+                mqttclient.connect();
             });
             $('#activity').on('click', '#mqttDisconnect', function (e) {
-                mqtt.disconnect();
+                mqttclient.disconnect();
             });
             $('#activity').on('click', '#mqttSendTest', function (e) {
                 var data = 'testmessage';
-                mqtt.addMessage(data);
+                mqttclient.addMessage(data);
             });
         };
     </script>
