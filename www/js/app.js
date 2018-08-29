@@ -50,7 +50,7 @@ var app = {
 
     loadUser: function () {
         app.user = storage.getItem('user');
-        console.log('logged in as: ' + Json.stringify(app.user));
+        console.log('logged in as: ' + JSON.stringify(app.user));
     },
     validateUser: function (newUser) {
         // TODO make api call to verify token
