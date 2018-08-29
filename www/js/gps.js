@@ -30,9 +30,6 @@ var gps = {
         if (backgroundGeolocation !== 'undefined') {
             backgroundGeolocation.getLocations(function (locations) {
                 gps.coords = locations[locations.length - 1];
-                gps.coords.lat = gps.coords.latitude;
-                gps.coords.lng = gps.coords.longitude;
-                gps.coords.acc = gps.coords.accuracy;
                 gps.showLocation();
 
                 if (typeof (onSuccessCallback) === 'function') {
