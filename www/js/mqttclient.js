@@ -3,14 +3,12 @@ var mqttclient = {
         host: 'production.dyamand.tengu.io',
         port: '8883',
         clientId: 'blf.smartbicycle',
-        topic: 'nodevice',
         protocolId: 'TCP'
     },
     defaultSettings: {
-        host: 'test.mosquitto.org', //mqttclient.isConnecting
+        host: 'test.mosquitto.org', //becme.idlab.uantwerpen.be
         port: '8080', //1883
         clientId: 'bicycleTestClient',
-        topic: 'bell',
         protocolId: 'MQTT'
     },
     client: false,
@@ -21,22 +19,22 @@ var mqttclient = {
     messagesLength: 20,
     initialize: function () {
         debug.log('Initialising mqtt ...');
-        mqttclient.loadSettings();
+       // mqttclient.loadSettings();
         mqttclient.client = false;
         mqttclient.isConnecting = false;
         mqttclient.connect();
         debug.log('Mqtt Initialised', 'success');
     },
     connect: function () {
-        console.log(mqttclient.isConnecting);
         if (!mqttclient.isConnecting) {
             debug.log("Mqtt client is connecting...");
             console.log(mqttclient.settings);
             mqttclient.isConnecting = true;
 
             try {
+                mqttclient.settings.clientId = 'becme-' + parseInt(Math.random() * 100, 10);
                 mqttclient.client = mqtt.connect(mqttclient.settings);
-
+                
                 mqttclient.client.on('connect', function () {
                     mqttclient.connected = true;
                     mqttclient.isConnecting = false;
@@ -67,17 +65,11 @@ var mqttclient = {
     addMessage: function (data) {
         var userId = (app.user !== undefined) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
-        /*
-                var dataParts = data.split(',');
-                var key = dataParts[0];
-                var value = (dataParts[1]) ? (dataParts[1]) : 1;
-                var datapayload = {};
-        */
 
-        gps.getLocation(function () {
+       // gps.getLocation(function () {
             var payload = {
                 timestamp: moment().unix(),
-                geoloc: gps.coords,
+                geoloc: {},//gps.coords,
                 payload: {
                     entityId: 'blf.' + userId,
                     data: data,
@@ -94,7 +86,7 @@ var mqttclient = {
             } else {
                 mqttclient.connect();
             }
-        });
+      //  });
     },
     sendMessageQueue: function () {
         if (mqttclient.connected) {

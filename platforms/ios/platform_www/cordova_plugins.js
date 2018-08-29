@@ -47,6 +47,22 @@ module.exports = [
     "clobbers": [
       "backgroundGeolocation"
     ]
+  },
+  {
+    "id": "cordova-plugin-mqtt.MQTTEmitter",
+    "file": "plugins/cordova-plugin-mqtt/www/MQTTEmitter.js",
+    "pluginId": "cordova-plugin-mqtt",
+    "clobbers": [
+      "ME"
+    ]
+  },
+  {
+    "id": "cordova-plugin-mqtt.CordovaMqTTPlugin",
+    "file": "plugins/cordova-plugin-mqtt/www/cordova-plugin-mqtt.js",
+    "pluginId": "cordova-plugin-mqtt",
+    "clobbers": [
+      "cordova.plugins.CordovaMqTTPlugin"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -56,7 +72,8 @@ module.exports.metadata =
   "cordova-plugin-ble-central": "1.2.2",
   "cordova-plugin-geolocation": "4.0.1",
   "cordova-plugin-whitelist": "1.3.3",
-  "cordova-plugin-mauron85-background-geolocation": "2.3.5"
+  "cordova-plugin-mauron85-background-geolocation": "2.3.5",
+  "cordova-plugin-mqtt": "0.3.8"
 };
 // BOTTOM OF METADATA
 });
