@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="be.postduif.bicyclelight" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="1.0.9" id="be.postduif.bicyclelight" ios-CFBundleVersion="1.0.9" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>bicycleLight</name>
     <description>
        A companion app for the bluetooth smart bicycle light
@@ -29,13 +29,16 @@
             </array>
         </config-file>
         <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
-            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+            <string>Deze app maakt via bluetooth verbinding met het slimme fietslicht.</string>
         </config-file>
         <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
             <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
         </config-file>
         <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
             <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+        </config-file>
+        <config-file parent="ITSAppUsesNonExemptEncryption" target="*-Info.plist">
+            <false />
         </config-file>
     </platform>
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5">

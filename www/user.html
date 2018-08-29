@@ -1,14 +1,13 @@
 <ons-page id="user">
     <div class="logged-out" style="display: none;">
         <ons-card>
-            <p>You need an acount at www.xxx.be. After creating your profile, you will receive a unique token.</p>
-            <p>Please fill out that token here.</p>
+            <p>Vul hier je gebruikersnaam in.</p>
         </ons-card>
         <ons-list>
             <ons-list-header>User</ons-list-header>
             <ons-list-item class="input-items">
                 <div class="left">
-                    token
+                    gebruikersnaam
                 </div>
                 <label class="center">
                     <ons-input id="user-token" float placeholder="your token"></ons-input>
@@ -22,15 +21,15 @@
     </div>
     <div class="logged-in" style="display: none;">
         <ons-card>
-            <p>Welcome
+            <p>Welkom
                 <span class="username"></span>.</p>
-            <p>You can use the app now.</p>
+            <p>Als je je fietslicht gekoppeld hebt, ben je klaar om te vertrekken.</p>
             <ons-button id="logout">log out</ons-button>
         </ons-card>
     </div>
     <ons-card>
         <p>Gps-data</p>
-        <div id="geolocation">no gps data yet</div>
+        <div id="geolocation">nog geen gps data</div>
     </ons-card>
     <script>
         ons.getScriptPage().onShow = function () {
