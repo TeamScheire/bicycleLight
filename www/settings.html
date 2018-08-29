@@ -17,12 +17,12 @@
                 <ons-input id="settings-port" float placeholder="mqtt port"></ons-input>
             </label>
         </ons-list-item>
-        <ons-list-item class="input-items">
+        <ons-list-item class="input-items" style="display: none;">
             <div class="left">
                 clientId
             </div>
             <label class="center">
-                <ons-input id="settings-clientid" float placeholder="mqtt clientid"></ons-input>
+                <ons-input id="settings-clientId" float placeholder="mqtt clientId"></ons-input>
             </label>
         </ons-list-item>
         <ons-list-item class="input-items">
@@ -48,7 +48,7 @@
 
             document.getElementById('settings-host').value = mqttSettings.host;
             document.getElementById('settings-port').value = mqttSettings.port;
-            document.getElementById('settings-clientid').value = mqttSettings.clientid;
+            document.getElementById('settings-clientId').value = mqttSettings.clientId;
             document.getElementById('settings-protocolId').value = mqttSettings.protocolId;
         };
 
@@ -57,12 +57,12 @@
                 var newSettings = {
                     host: $('#settings-host').val(),
                     port: $('#settings-port').val(),
-                    clientid: $('#settings-clientid').val(),
+                    clientId: $('#settings-clientId').val(),
                     protocolId: $('#settings-protocolId').val()
                 };
 
                 newSettings = mqttclient.validateSettings(newSettings);
-                
+
                 if (newSettings) {
                     mqttclient.saveSettings(newSettings);
                     if (mqttclient.connected) {

@@ -1,13 +1,16 @@
 var app = {
     user: {},
+    debug: false,
     initialize: function () {
         console.log('app initialize');
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-/*
-        ons.ready(function () {
-            app.onDeviceReady();
-        });
-*/
+        console.log(window.location.hostname);
+        if (window.location.hostname == 'bicyclelight.localhost') {
+            app.debug = true;
+            ons.ready(function () {
+                app.onDeviceReady();
+            });
+        }
     },
 
     onDeviceReady: function () {
