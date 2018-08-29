@@ -2,13 +2,11 @@ var mqttclient = {
     settings: {
         host: 'production.dyamand.tengu.io',
         port: '8883',
-        clientId: 'blf.smartbicycle',
         protocolId: 'TCP'
     },
     defaultSettings: {
         host: 'becme.idlab.uantwerpen.be',
         port: '9001',
-        clientId: 'becme',
         protocolId: 'MQTT'
     },
     client: false,
@@ -38,7 +36,7 @@ var mqttclient = {
                 mqttclient.client.on('connect', function () {
                     mqttclient.connected = true;
                     mqttclient.isConnecting = false;
-                    console.log('mqtt connected');
+                    debug.log('mqtt connected');
                     mqttclient.toggleConnectionButtons();
                     mqttclient.sendMessageQueue();
                 })
