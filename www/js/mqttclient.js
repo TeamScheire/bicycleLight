@@ -7,8 +7,8 @@ var mqttclient = {
         protocolId: 'TCP'
     },
     defaultSettings: {
-        host: 'test.mosquitto.org',
-        port: '8080',
+        host: 'test.mosquitto.org', //mqttclient.isConnecting
+        port: '8080', //1883
         clientId: 'bicycleTestClient',
         topic: 'bell',
         protocolId: 'MQTT'
@@ -23,12 +23,15 @@ var mqttclient = {
         debug.log('Initialising mqtt ...');
         mqttclient.loadSettings();
         mqttclient.client = false;
+        mqttclient.isConnecting = false;
         mqttclient.connect();
         debug.log('Mqtt Initialised', 'success');
     },
     connect: function () {
+        console.log(mqttclient.isConnecting);
         if (!mqttclient.isConnecting) {
             debug.log("Mqtt client is connecting...");
+            console.log(mqttclient.settings);
             mqttclient.isConnecting = true;
 
             try {
