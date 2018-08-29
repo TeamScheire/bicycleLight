@@ -108,7 +108,7 @@ var mqttclient = {
             debug.log('Mqtt Message sent', 'success');
 
             mqttclient.messages.push({
-                data: payload.data,
+                data: payload.payload,
                 timestamp: moment().format(),
                 status: true
             });
