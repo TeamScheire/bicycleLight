@@ -3,7 +3,7 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "becme-42.png",
+      "filename" : "becme-40.png",
       "scale" : "2x"
     },
     {
@@ -93,7 +93,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "becme-40.png",
+      "filename" : "becme-42.png",
       "scale" : "1x"
     },
     {
@@ -123,7 +123,7 @@
     {
       "size" : "72x72",
       "idiom" : "ipad",
-      "filename" : "icon-72-2x.png",
+      "filename" : "icon-72@2x.png",
       "scale" : "2x"
     },
     {

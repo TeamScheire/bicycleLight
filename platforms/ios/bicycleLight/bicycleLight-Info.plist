@@ -24,19 +24,8 @@
     <string>0.0.2</string>
     <key>CFBundleSignature</key>
     <string>????</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>prefs</string>
-        </array>
-      </dict>
-    </array>
     <key>CFBundleVersion</key>
-    <string>2</string>
+    <string>4.0.0</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
     <key>LSRequiresIPhoneOS</key>
@@ -58,9 +47,12 @@
     <string/>
     <key>NSMainNibFile~ipad</key>
     <string/>
+    <key>NSMotionUsageDescription</key>
+    <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig. Hiervoor wordt ook de accelerometer gebruikt.</string>
     <key>UIBackgroundModes</key>
     <array>
       <string>bluetooth-central</string>
+      <string>fetch</string>
       <string>location</string>
     </array>
     <key>UIRequiresFullScreen</key>
@@ -68,8 +60,6 @@
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>UISupportedInterfaceOrientations~ipad</key>
     <array>

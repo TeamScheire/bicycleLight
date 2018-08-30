@@ -5,15 +5,51 @@ var gps = {
         acc: 0
     },
     initialize: function () {
+        /*
         backgroundGeolocation.configure(gps.onBackgroundInitSuccess, gps.onBackgroundInitFailure, {
             desiredAccuracy: 10,
             stationaryRadius: 20,
             distanceFilter: 30,
             interval: 10000
         });
+       
         backgroundGeolocation.start();
+        */
+
+        gps.bgGeoLocation = window.BackgroundGeolocation;
+        gps.bgGeoLocation.on('location', gps.onLocation, gps.onLocationfailure);
+
+        // Fired whenever state changes from moving->stationary or vice-versa.
+        gps.bgGeoLocation.on('motionchange', function (isMoving) {
+            console.log('- onMotionChange: ', isMoving);
+        });
+
+        gps.bgGeoLocation.ready({
+            desiredAccuracy: 0,
+            distanceFilter: 5,
+            stationaryRadius: 10
+        }, function (state) {
+            console.log('- = - = - BackgroundGeolocation is configured and ready to use');
+            //console.log(state);
+            //if (!state.enabled) {
+                gps.bgGeoLocation.start(function () {
+                    console.log('- = - = - BackgroundGeolocation tracking started');
+                });
+            //}
+        });
+        //gps.bgGeoLocation.start();
     },
-    onBackgroundInitSuccess: function (location) {
+    onLocation: function (location) {
+        gps.coords = location.coords;
+        gps.coords.timestamp = location.timestamp;
+        gps.coords.battery = location.battery;
+        gps.showLocation();
+        console.log('- Location: ', JSON.stringify(location));
+    },
+    onLocationfailure: function (errorCode) {
+        console.warn('- BackgroundGeoLocation error: ', errorCode);
+    },
+    /*onBackgroundInitSuccess: function (location) {
         console.log('-----background location success:-----');
         console.log(location);
         gps.coords = {
@@ -21,18 +57,18 @@ var gps = {
             lng: location.longitude,
             acc: location.accuracy
         }
+        
     },
     onBackgroundInitFailure: function (error) {
         debug.log('background gps failure');
         console.log(error);
-    },
+    },*/
     getLocation: function (onSuccessCallback) {
         if (backgroundGeolocation !== 'undefined') {
             backgroundGeolocation.getLocations(function (locations) {
+                console.log('---location---');
+                console.log(locations[locations.length - 1]);
                 gps.coords = locations[locations.length - 1];
-                gps.coords.lat = gps.coords.latitude;
-                gps.coords.lng = gps.coords.longitude;
-                gps.coords.acc = gps.coords.accuracy;
                 gps.showLocation();
 
                 if (typeof (onSuccessCallback) === 'function') {

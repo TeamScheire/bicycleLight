@@ -19,7 +19,7 @@ var app = {
         app.checkIfUserLoggedIn();
         mqttclient.initialize();
         gps.initialize();
-        gps.getLocation();
+        //gps.getLocation();
         bluetooth.initialize();
     },
 

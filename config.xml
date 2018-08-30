@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="2" id="be.postduif.bicyclelight" ios-CFBundleVersion="2" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="be.postduif.bicyclelight" ios-CFBundleVersion="4.0.0" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>bicycleLight</name>
     <description>
        A companion app for the bluetooth smart bicycle light
@@ -41,8 +41,13 @@
             <false />
         </config-file>
     </platform>
-    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5">
-        <variable name="ALWAYS_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+    <plugin name="cordova-background-geolocation-lt" spec="^2.13.1">
+        <variable name="BACKGROUND_MODE_LOCATION" value="&lt;string&gt;location&lt;/string&gt;" />
+        <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="MOTION_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig. Hiervoor wordt ook de accelerometer gebruikt." />
     </plugin>
+    <engine name="browser" spec="^5.0.4" />
     <engine name="ios" spec="^4.5.5" />
 </widget>

@@ -2,13 +2,11 @@ var mqttclient = {
     settings: {
         host: 'production.dyamand.tengu.io',
         port: '8883',
-        clientId: 'blf.smartbicycle',
         protocolId: 'TCP'
     },
     defaultSettings: {
         host: 'becme.idlab.uantwerpen.be',
         port: '9001',
-        clientId: 'becme',
         protocolId: 'MQTT'
     },
     client: false,
@@ -38,7 +36,7 @@ var mqttclient = {
                 mqttclient.client.on('connect', function () {
                     mqttclient.connected = true;
                     mqttclient.isConnecting = false;
-                    console.log('mqtt connected');
+                    debug.log('mqtt connected');
                     mqttclient.toggleConnectionButtons();
                     mqttclient.sendMessageQueue();
                 })
@@ -63,14 +61,14 @@ var mqttclient = {
         }
     },
     addMessage: function (data) {
-        var userId = (app.user !== undefined) ? app.user.userId : 'nouser';
+        var userId = ((app.user !== undefined) && (app.user.userId !== undefined)) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
-        gps.getLocation(function () {
+       // gps.getLocation(function () {
             var payload = {
                 timestamp: moment().unix(),
                 geoloc: gps.coords,
-                entityId: 'blf.' + userId,
+                entityId: userId, //'blf.' + userId,
                 deviceId: deviceId,
                 payload: data
             };
@@ -84,7 +82,7 @@ var mqttclient = {
             } else {
                 mqttclient.connect();
             }
-        });
+       // });
     },
     sendMessageQueue: function () {
         if (mqttclient.connected) {
