@@ -61,7 +61,7 @@ var mqttclient = {
         }
     },
     addMessage: function (data) {
-        var userId = (app.user !== undefined) ? app.user.userId : 'nouser';
+        var userId = ((app.user !== undefined) && (app.user.userId !== undefined)) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
         gps.getLocation(function () {
