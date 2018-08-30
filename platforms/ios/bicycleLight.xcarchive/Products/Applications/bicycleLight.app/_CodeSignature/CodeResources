@@ -4,6 +4,22 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		4E43yF6v0vpJVNeYhhioz5zZkeU=
+		</data>
+		<key>AppIcon20x20@2x~ipad.png</key>
+		<data>
+		4E43yF6v0vpJVNeYhhioz5zZkeU=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		qRclKvT7cqfLHgVZG1WKIpcQtzE=
+		</data>
+		<key>AppIcon20x20~ipad.png</key>
+		<data>
+		DUtgIZK4GjnfbrZYpEaDHDHG+so=
+		</data>
 		<key>AppIcon29x29.png</key>
 		<data>
 		/9rLbmsYxl54id9vPEOPfCrpcH8=
@@ -14,7 +30,7 @@
 		</data>
 		<key>AppIcon29x29@2x~ipad.png</key>
 		<data>
-		mVu6rfZvmn85BOmkHVJHreO6CQE=
+		xV9NY+NeCuqrMoqv9NqOpRnbUYY=
 		</data>
 		<key>AppIcon29x29@3x.png</key>
 		<data>
@@ -22,7 +38,7 @@
 		</data>
 		<key>AppIcon29x29~ipad.png</key>
 		<data>
-		kq2SRjYrT/gJ4aeJZV2VJa/KiuI=
+		/9rLbmsYxl54id9vPEOPfCrpcH8=
 		</data>
 		<key>AppIcon40x40@2x.png</key>
 		<data>
@@ -30,7 +46,7 @@
 		</data>
 		<key>AppIcon40x40@2x~ipad.png</key>
 		<data>
-		PtOZln81Z9Z9mhyjrpU9sD3/Bsg=
+		epyvKRbfs7eoADmKbltnRSVwH8E=
 		</data>
 		<key>AppIcon40x40@3x.png</key>
 		<data>
@@ -38,7 +54,7 @@
 		</data>
 		<key>AppIcon40x40~ipad.png</key>
 		<data>
-		3KGRhE6fGtDn+6OcCWh00noSXJ8=
+		4E43yF6v0vpJVNeYhhioz5zZkeU=
 		</data>
 		<key>AppIcon50x50@2x~ipad.png</key>
 		<data>
@@ -86,11 +102,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		rDP9VfHsYynYlOkdwZiqbmi2UwI=
+		ye3CT231JT14qHAUdoI3RaEdBpg=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		y/NmQHpMAVLjn4o4cOxS65R/oqc=
+		UbEyNwMlahCbLFcW9LHKK7zq+cw=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -98,11 +114,11 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		vRlFtNCeb7dUICc0/HhEc9+chgE=
+		WbnRg+vJOr8RjYv5R9L0q4S0n+w=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LKBKsrGRHasnZ0Sy8te36g1tVjY=
+		CFPwvGP7Pwp+aP2y1L0mDpNjNvw=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -170,7 +186,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		fDO3i5bltN3wLQUM/YPkx7rCRdg=
+		vtfXI7CuGwe+TALs5Co/iJJQ1YA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -178,7 +194,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		lBdiT46UX+GpzV3JSwFWvpadfXk=
+		+zaTvFNPULTi5vwgeCx31At+oAw=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -210,7 +226,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		c6ogqOw1PoGvQ6St6h3mOcXF6bk=
+		dlUXHOiV73jeW+58tPr+CTUpEBo=
 		</data>
 		<key>www/css/index.css</key>
 		<data>
@@ -242,7 +258,7 @@
 		</data>
 		<key>www/js/app.js</key>
 		<data>
-		Y1bcbfmkVglhmUleOO7ST48BE00=
+		e/6cARanxAHbJmrFcCa1KTxW/N4=
 		</data>
 		<key>www/js/bluetooth.js</key>
 		<data>
@@ -258,11 +274,11 @@
 		</data>
 		<key>www/js/gps.js</key>
 		<data>
-		aTHm4j3UdFEdVfOAuBa6Rk/kUco=
+		DjtYVeIotdT0S2wgJ8OdL0fDJio=
 		</data>
 		<key>www/js/mqttclient.js</key>
 		<data>
-		MIgVfFxyfwFc1mDAsG+tNnPKs+c=
+		73vwkoVHoQ4v3fPtS0JlPl1j9h4=
 		</data>
 		<key>www/js/storage.js</key>
 		<data>
@@ -1236,6 +1252,18 @@
 		<data>
 		TXLEwLEp/wLJ6yx6JM3teqHE0Qw=
 		</data>
+		<key>www/plugins/cordova-background-geolocation-lt/www/API.js</key>
+		<data>
+		LZEmCTJhPYz+4wlylci04UYNww4=
+		</data>
+		<key>www/plugins/cordova-background-geolocation-lt/www/BackgroundGeolocation.js</key>
+		<data>
+		bcmVj44yWjegB5gDRb2nPbm8dSo=
+		</data>
+		<key>www/plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js</key>
+		<data>
+		1W1AVGVE5XB/zctGaxMfPEYmOxE=
+		</data>
 		<key>www/plugins/cordova-plugin-ble-central/www/ble.js</key>
 		<data>
 		AAhx9Dx6qVVVZ4HvRYc8MqlVTgc=
@@ -1256,21 +1284,61 @@
 		<data>
 		xd1PUlgwzLl4gphru/VGluqXqvg=
 		</data>
-		<key>www/plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js</key>
-		<data>
-		OrAiGcp2+SWsWv/fQMOoBnEZUE8=
-		</data>
 		<key>www/settings.html</key>
 		<data>
 		IfJFa4KWCk/QzPduuyGzzVNeh54=
 		</data>
 		<key>www/user.html</key>
 		<data>
-		4QZbNa14ZsGKlwE3hrn7m7Pbn/0=
+		tYaRnHwYKPR+bOsXS61OeWwygRQ=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4E43yF6v0vpJVNeYhhioz5zZkeU=
+			</data>
+			<key>hash2</key>
+			<data>
+			vAmFfhMCSSuBfJ7AAeVtmvW2K8Q2qMdT1ShUdqlFaPg=
+			</data>
+		</dict>
+		<key>AppIcon20x20@2x~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4E43yF6v0vpJVNeYhhioz5zZkeU=
+			</data>
+			<key>hash2</key>
+			<data>
+			vAmFfhMCSSuBfJ7AAeVtmvW2K8Q2qMdT1ShUdqlFaPg=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			qRclKvT7cqfLHgVZG1WKIpcQtzE=
+			</data>
+			<key>hash2</key>
+			<data>
+			qvt0MxDE3dhsDbTEzwmnq/XHSHjUta81NsAcnPE6NtI=
+			</data>
+		</dict>
+		<key>AppIcon20x20~ipad.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			DUtgIZK4GjnfbrZYpEaDHDHG+so=
+			</data>
+			<key>hash2</key>
+			<data>
+			NbPpKbEcKhnBEaGnYP/7lQoX4Sn18SYaeWPTqVIIR+k=
+			</data>
+		</dict>
 		<key>AppIcon29x29.png</key>
 		<dict>
 			<key>hash</key>
@@ -1297,11 +1365,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mVu6rfZvmn85BOmkHVJHreO6CQE=
+			xV9NY+NeCuqrMoqv9NqOpRnbUYY=
 			</data>
 			<key>hash2</key>
 			<data>
-			G5kp0yaWQrbUflTHuKyPf27/O6bTh5Ezx0uWAeGUFvU=
+			M8d1uQ0sAEjMsnymHE3lSQYTBzQcE9sUE//9tiMVJ70=
 			</data>
 		</dict>
 		<key>AppIcon29x29@3x.png</key>
@@ -1319,11 +1387,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kq2SRjYrT/gJ4aeJZV2VJa/KiuI=
+			/9rLbmsYxl54id9vPEOPfCrpcH8=
 			</data>
 			<key>hash2</key>
 			<data>
-			zx82KBtjvMuVs3dy+821y9dEx9ELFNE3eXZCv2u5QEM=
+			/u0qjbV+35GcBnPD0nxXI3og4g4XYqybpJUO53fsDi0=
 			</data>
 		</dict>
 		<key>AppIcon40x40@2x.png</key>
@@ -1341,11 +1409,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PtOZln81Z9Z9mhyjrpU9sD3/Bsg=
+			epyvKRbfs7eoADmKbltnRSVwH8E=
 			</data>
 			<key>hash2</key>
 			<data>
-			wSGjpTyfXyE/VY7XduvSkCSzZZASCOyn8yF8WE7L7Uk=
+			/8rfDzWjY7ay4jljhR/2FX9iEGAlYfaAvE8srImys2E=
 			</data>
 		</dict>
 		<key>AppIcon40x40@3x.png</key>
@@ -1363,11 +1431,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3KGRhE6fGtDn+6OcCWh00noSXJ8=
+			4E43yF6v0vpJVNeYhhioz5zZkeU=
 			</data>
 			<key>hash2</key>
 			<data>
-			UtY132Eim13usKRJuvo5PcpUYFyFTeJN0eJmJZvd4Zk=
+			vAmFfhMCSSuBfJ7AAeVtmvW2K8Q2qMdT1ShUdqlFaPg=
 			</data>
 		</dict>
 		<key>AppIcon50x50@2x~ipad.png</key>
@@ -1495,22 +1563,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rDP9VfHsYynYlOkdwZiqbmi2UwI=
+			ye3CT231JT14qHAUdoI3RaEdBpg=
 			</data>
 			<key>hash2</key>
 			<data>
-			RclQAkTEmo/jmnJqgfXkTghXWyBoaxVwTOZyiyDtjd0=
+			5snpvpKshVMhGxUYUcrbNkH69AP9PU/d5k+ueZ/wD54=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			y/NmQHpMAVLjn4o4cOxS65R/oqc=
+			UbEyNwMlahCbLFcW9LHKK7zq+cw=
 			</data>
 			<key>hash2</key>
 			<data>
-			+OiKvuaDAsz3XMdmbkQiJ3oMnGgHsQtY+f9j0xJrdGo=
+			WrJLNjN7HcHD6Q9eJSPHiX9UmB2mQbiHDILrgT9oHuQ=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1528,11 +1596,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vRlFtNCeb7dUICc0/HhEc9+chgE=
+			WbnRg+vJOr8RjYv5R9L0q4S0n+w=
 			</data>
 			<key>hash2</key>
 			<data>
-			hDrVoC8I1rftDSgzPgGMQ95EtSEQCWHVbxQZcjSFL44=
+			7iwoVhXHbkHKQAje5or5p3euH/6S7frYejoUFFpkqsk=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -1715,22 +1783,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fDO3i5bltN3wLQUM/YPkx7rCRdg=
+			vtfXI7CuGwe+TALs5Co/iJJQ1YA=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qi461QsHiBxCA2gv4tmbun9/Xyp7YPEQW2zgYL61vHI=
+			UqvihVBqz85mjBrVq/MRYHKbEZ4aymYH0eqa7y0m0tY=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lBdiT46UX+GpzV3JSwFWvpadfXk=
+			+zaTvFNPULTi5vwgeCx31At+oAw=
 			</data>
 			<key>hash2</key>
 			<data>
-			oQkAJJi73gdPrCPHtAJjNukcYZ7JSiKErIfHXcrgWk0=
+			zEOr3/5oNyQCtF6kUtPke0bl6Xop0AiA3y4Z6lyXou4=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -1814,11 +1882,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c6ogqOw1PoGvQ6St6h3mOcXF6bk=
+			dlUXHOiV73jeW+58tPr+CTUpEBo=
 			</data>
 			<key>hash2</key>
 			<data>
-			1Rg0w7vaMkSnYTH1oAvGX5eJNgbqbpkdZ4Km0tMtMiE=
+			U+nE3BJ5kfwcFHYr5ndRjulkhjJOZP/6K9iMMSXMaSc=
 			</data>
 		</dict>
 		<key>www/css/index.css</key>
@@ -1902,11 +1970,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Y1bcbfmkVglhmUleOO7ST48BE00=
+			e/6cARanxAHbJmrFcCa1KTxW/N4=
 			</data>
 			<key>hash2</key>
 			<data>
-			P9oTFbRlt5zA1TZrb3TJ3Jqvlneb6c7EacVAEQ58Ybg=
+			FPtFNhJiyM6BXB4RLq22t+SQ4L8m2oN9dnH8SIKtbUk=
 			</data>
 		</dict>
 		<key>www/js/bluetooth.js</key>
@@ -1946,22 +2014,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aTHm4j3UdFEdVfOAuBa6Rk/kUco=
+			DjtYVeIotdT0S2wgJ8OdL0fDJio=
 			</data>
 			<key>hash2</key>
 			<data>
-			RxgkPqV6m0A283Ay+GfQyzohVjY4JhJv0j7ZmQCccks=
+			PEiO8iDhtrcMvxfiZ6UNRXua8+EQ2bygkYS4mUVj+4Y=
 			</data>
 		</dict>
 		<key>www/js/mqttclient.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MIgVfFxyfwFc1mDAsG+tNnPKs+c=
+			73vwkoVHoQ4v3fPtS0JlPl1j9h4=
 			</data>
 			<key>hash2</key>
 			<data>
-			MgSh0eFVvSG8KqPJ+DLTlupUEMp+ZXYqzcqrO+YdfJk=
+			CfldwTKYS8AJpkW8p/brKoCbVcuc71JHb/t4pkvCgNQ=
 			</data>
 		</dict>
 		<key>www/js/storage.js</key>
@@ -4637,6 +4705,39 @@
 			JlXK1U2KJ8VYYvBlEw1C+OaJhGVrM+eK/W4Qnjq2i5I=
 			</data>
 		</dict>
+		<key>www/plugins/cordova-background-geolocation-lt/www/API.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LZEmCTJhPYz+4wlylci04UYNww4=
+			</data>
+			<key>hash2</key>
+			<data>
+			3m8w78BZssv/aGiO5+9qVz6Sm78pLtymHUmjag2pveE=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-background-geolocation-lt/www/BackgroundGeolocation.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bcmVj44yWjegB5gDRb2nPbm8dSo=
+			</data>
+			<key>hash2</key>
+			<data>
+			HuQU7NWe2MSJrH235s/B0q1Fb3CkkCGj6r+hXYQlTwU=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1W1AVGVE5XB/zctGaxMfPEYmOxE=
+			</data>
+			<key>hash2</key>
+			<data>
+			ryUuJZ7/9ZOLd+DvL3bn8XWMTUJE5hweaZpARb64Klg=
+			</data>
+		</dict>
 		<key>www/plugins/cordova-plugin-ble-central/www/ble.js</key>
 		<dict>
 			<key>hash</key>
@@ -4692,17 +4793,6 @@
 			v22skvbiN2CQ1u+mi67mwi3DaHJqHEjkWxMTw7y6L64=
 			</data>
 		</dict>
-		<key>www/plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			OrAiGcp2+SWsWv/fQMOoBnEZUE8=
-			</data>
-			<key>hash2</key>
-			<data>
-			GtG6CliDguEL4wkW9B1CU4HzDOGGPIP9bFamRnWj60Q=
-			</data>
-		</dict>
 		<key>www/settings.html</key>
 		<dict>
 			<key>hash</key>
@@ -4718,11 +4808,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4QZbNa14ZsGKlwE3hrn7m7Pbn/0=
+			tYaRnHwYKPR+bOsXS61OeWwygRQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			S+l8rtdr0nQ+AmCfoC8N1hDVt61xHv4Fv07Ebh5zLFw=
+			PHp/s2lhTucN0U8QHO7t9Axytqka4pbR4U7sDRd57cM=
 			</data>
 		</dict>
 	</dict>

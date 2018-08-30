@@ -64,7 +64,7 @@ var mqttclient = {
         var userId = ((app.user !== undefined) && (app.user.userId !== undefined)) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
-        gps.getLocation(function () {
+       // gps.getLocation(function () {
             var payload = {
                 timestamp: moment().unix(),
                 geoloc: gps.coords,
@@ -82,7 +82,7 @@ var mqttclient = {
             } else {
                 mqttclient.connect();
             }
-        });
+       // });
     },
     sendMessageQueue: function () {
         if (mqttclient.connected) {

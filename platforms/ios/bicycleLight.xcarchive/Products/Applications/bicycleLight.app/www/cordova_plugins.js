@@ -1,6 +1,27 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
+    "id": "cordova-plugin-background-fetch.BackgroundFetch",
+    "file": "plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js",
+    "pluginId": "cordova-plugin-background-fetch",
+    "clobbers": [
+      "window.BackgroundFetch"
+    ]
+  },
+  {
+    "id": "cordova-background-geolocation-lt.BackgroundGeolocation",
+    "file": "plugins/cordova-background-geolocation-lt/www/BackgroundGeolocation.js",
+    "pluginId": "cordova-background-geolocation-lt",
+    "clobbers": [
+      "window.BackgroundGeolocation"
+    ]
+  },
+  {
+    "id": "cordova-background-geolocation-lt.API",
+    "file": "plugins/cordova-background-geolocation-lt/www/API.js",
+    "pluginId": "cordova-background-geolocation-lt"
+  },
+  {
     "id": "cordova-plugin-ble-central.ble",
     "file": "plugins/cordova-plugin-ble-central/www/ble.js",
     "pluginId": "cordova-plugin-ble-central",
@@ -39,23 +60,17 @@ module.exports = [
     "clobbers": [
       "navigator.geolocation"
     ]
-  },
-  {
-    "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
-    "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
-    "pluginId": "cordova-plugin-mauron85-background-geolocation",
-    "clobbers": [
-      "backgroundGeolocation"
-    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
+  "cordova-plugin-background-fetch": "5.4.1",
+  "cordova-plugin-cocoalumberjack": "0.0.4",
+  "cordova-background-geolocation-lt": "2.13.1",
   "cordova-plugin-compat": "1.2.0",
   "cordova-plugin-ble-central": "1.2.2",
   "cordova-plugin-geolocation": "4.0.1",
-  "cordova-plugin-mauron85-background-geolocation": "2.3.5",
   "cordova-plugin-whitelist": "1.3.3"
 };
 // BOTTOM OF METADATA
