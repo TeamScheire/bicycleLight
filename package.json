@@ -10,6 +10,7 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
+        "cordova-android": "^7.0.0",
         "cordova-background-geolocation-lt": "^2.13.1",
         "cordova-browser": "^5.0.4",
         "cordova-ios": "^4.5.5",
@@ -24,6 +25,9 @@
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
+            "cordova-plugin-ble-central": {
+                "TEXT": "Connecting to a ble bicycle bell."
+            },
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig."
             },
@@ -37,7 +41,8 @@
         },
         "platforms": [
             "browser",
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }
