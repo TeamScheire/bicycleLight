@@ -7,7 +7,6 @@ var bluetooth = {
     writeWithoutResponse: true,
     connectedDevice: {},
     lastConnectedDeviceId: false,
-    heartbeatInterval: false,
     messages: [],
     initialize: function () {
         debug.log('Initialising bluetooth ...');
@@ -64,34 +63,16 @@ var bluetooth = {
             debug.log('Connected to ' + deviceId, 'success');
             mqttclient.addMessage('device,1');
 
-            //bluetooth.heartbeatInterval = setInterval(bluetooth.heartbeat, 5000);
             bluetooth.toggleConnectionButtons();
         };
 
         ble.connect(deviceId, onConnect, bluetooth.onError);
-    },
-    heartbeat: function () {
-        if (bluetooth.connectedDevice) {
-            try {
-                ble.isConnected(bluetooth.connectedDevice.id, function () {
-                    mqttclient.addMessage('heartbeat,1');
-                }, function () {
-                    mqttclient.addMessage('device,0');
-                    debug.log('Automatically disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
-                    bluetooth.connectedDevice = {};
-                    clearInterval(bluetooth.heartbeatInterval);
-                });
-            } catch (error) {
-                ble.onError(error);
-            }
-        }
     },
     onDisconnectDevice: function () {
         storage.removeItem('connectedDevice');
         mqttclient.addMessage('device,0');
         debug.log('Disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
         bluetooth.connectedDevice = {};
-        clearInterval(bluetooth.heartbeatInterval);
         bluetooth.toggleConnectionButtons()();
     },
     disconnectDevice: function (event) {
@@ -125,7 +106,6 @@ var bluetooth = {
             bluetooth.connectedDevice = {};
             mqttclient.addMessage('device,0');
             debug.log('error and disconnected from ' + bluetooth.lastConnectedDeviceId, 'success');
-            clearInterval(bluetooth.heartbeatInterval);
             bluetooth.toggleConnectionButtons()();
         });
     },
