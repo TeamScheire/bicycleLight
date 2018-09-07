@@ -1,14 +1,10 @@
 var mqttclient = {
-    settings: {
-        host: 'production.dyamand.tengu.io',
-        port: '8883',
-        protocolId: 'TCP'
-    },
     defaultSettings: {
         host: 'becme.idlab.uantwerpen.be',
         port: '9001',
         protocolId: 'MQTT'
     },
+    settings: {},
     client: false,
     isConnecting: false,
     connected: false,
@@ -64,25 +60,23 @@ var mqttclient = {
         var userId = ((app.user !== undefined) && (app.user.userId !== undefined)) ? app.user.userId : 'nouser';
         var deviceId = (bluetooth.connectedDevice.id !== undefined) ? bluetooth.connectedDevice.id : 'nodevice';
 
-       // gps.getLocation(function () {
-            var payload = {
-                timestamp: moment().unix(),
-                geoloc: gps.coords,
-                entityId: userId, //'blf.' + userId,
-                deviceId: deviceId,
-                payload: data
-            };
+        var payload = {
+            timestamp: moment().unix(),
+            geoloc: gps.coords,
+            entityId: userId,
+            deviceId: deviceId,
+            payload: data
+        };
 
-            mqttclient.messageQueue.push(payload);
-            console.log('-----message added-----');
-            console.log(payload);
+        mqttclient.messageQueue.push(payload);
+        console.log('-----message added-----');
+        console.log(payload);
 
-            if (mqttclient.connected) {
-                mqttclient.sendMessageQueue();
-            } else {
-                mqttclient.connect();
-            }
-       // });
+        if (mqttclient.connected) {
+            mqttclient.sendMessageQueue();
+        } else {
+            mqttclient.connect();
+        }
     },
     sendMessageQueue: function () {
         if (mqttclient.connected) {
@@ -96,7 +90,7 @@ var mqttclient = {
     },
     sendMessage(payload) {
         try {
-            var topic = 'becme'; // payload.payload.entityId
+            var topic = 'becme';
 
             console.log("----message to send---");
             console.log('topic: ' + topic);
