@@ -55,7 +55,7 @@ var app = {
         console.log('logged in as: ' + JSON.stringify(app.user));
     },
     validateUser: function (newUser) {
-        newUser.userId = newUser.userName.toLowerCase();
+        newUser.userId = newUser.userName.toLowerCase().trim();
         return newUser;
     },
     saveUser: function (newUser) {
