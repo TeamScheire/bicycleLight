@@ -45,3 +45,4 @@ buck-out/
 *.jsbundle
 plugins
 platforms/browser
+.vscode
