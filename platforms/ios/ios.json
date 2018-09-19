@@ -10,7 +10,7 @@
           "UIBackgroundModes": [
             {
               "xml": "<array><string>bluetooth-central</string></array>",
-              "count": 13
+              "count": 16
             },
             {
               "xml": "<array><string>fetch</string></array>",
@@ -24,25 +24,25 @@
           "NSBluetoothPeripheralUsageDescription": [
             {
               "xml": "<string>Deze app maakt via bluetooth verbinding met het slimme fietslicht.</string>",
-              "count": 13
+              "count": 16
             }
           ],
           "NSLocationAlwaysAndWhenInUseUsageDescription": [
             {
               "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
-              "count": 13
+              "count": 16
             }
           ],
           "NSLocationAlwaysUsageDescription": [
             {
               "xml": "<string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>",
-              "count": 13
+              "count": 16
             }
           ],
           "ITSAppUsesNonExemptEncryption": [
             {
               "xml": "<false />",
-              "count": 13
+              "count": 16
             }
           ],
           "NSLocationWhenInUseUsageDescription": [
