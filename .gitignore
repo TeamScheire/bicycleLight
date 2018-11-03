@@ -46,3 +46,7 @@ buck-out/
 plugins
 platforms/browser
 .vscode
+SmartLight/firmware/sdk
+ses/Output
+*/ses/Output
+SmartLight/firmware/CME_Light_Button/octa/s132/ses/Output

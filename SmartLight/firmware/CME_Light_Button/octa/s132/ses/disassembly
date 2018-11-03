@@ -1,0 +1,382 @@
+    D001        beq 0x0002DC3A
+--- ble_app.c -- 249 ---------------------------------------
+{
+uint32_t err_code;
+err_code = bsp_wakeup_button_enable(0);
+if (err_code != NRF_SUCCESS) return err_code;
+    9B01        ldr r3, [sp, #4]
+    E012        b 0x0002DC60
+--- ble_app.c -- 254 ---------------------------------------
+//RETURN_ON_ERROR_NOT_NOT_SUPPORTED(err_code);
+err_code = bsp_wakeup_button_enable(1);
+    2001        movs r0, #1
+    F7FEFD93    bl 0x0002C766 <bsp_wakeup_button_enable>
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 257 ---------------------------------------
+if (err_code != NRF_SUCCESS) return err_code;
+    9B01        ldr r3, [sp, #4]
+    2B00        cmp r3, #0
+    D001        beq 0x0002DC4C
+--- ble_app.c -- 257 ---------------------------------------
+if (err_code != NRF_SUCCESS) return err_code;
+    9B01        ldr r3, [sp, #4]
+    E009        b 0x0002DC60
+--- ble_app.c -- 258 ---------------------------------------
+//RETURN_ON_ERROR_NOT_NOT_SUPPORTED(err_code);
+err_code = bsp_wakeup_button_enable(2);
+    2002        movs r0, #2
+    F7FEFD8A    bl 0x0002C766 <bsp_wakeup_button_enable>
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 261 ---------------------------------------
+if (err_code != NRF_SUCCESS) return err_code;
+    9B01        ldr r3, [sp, #4]
+    2B00        cmp r3, #0
+    D001        beq 0x0002DC5E
+--- ble_app.c -- 261 ---------------------------------------
+if (err_code != NRF_SUCCESS) return err_code;
+    9B01        ldr r3, [sp, #4]
+    E000        b 0x0002DC60
+--- ble_app.c -- 262 ---------------------------------------
+//RETURN_ON_ERROR_NOT_NOT_SUPPORTED(err_code);
+return NRF_SUCCESS;
+    2300        movs r3, #0
+--- ble_app.c -- 265 ---------------------------------------
+}
+    4618        mov r0, r3
+    B003        add sp, sp, #12
+    F85DFB04    pop.w {pc}
+--- ble_app.c -- 268 ---------------------------------------
+*
+* @note This function will not return.
+*/
+void sleep_mode_enter(void)
+{
+    B500        push {lr}
+    B083        sub sp, sp, #12
+--- ble_app.c -- 273 ---------------------------------------
+uint32_t err_code = indication_handler(BSP_INDICATE_IDLE);
+    2000        movs r0, #0
+    F7FFFD65    bl 0x0002D73C <indication_handler>
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 274 ---------------------------------------
+if (err_code > NRF_ERROR_SVC_HANDLER_MISSING)
+    9B01        ldr r3, [sp, #4]
+    2B01        cmp r3, #1
+    D909        bls 0x0002DC8E
+--- ble_app.c -- 275 ---------------------------------------
+NRF_LOG_INFO("indication_handler return with error %d", err_code);
+    4B11        ldr r3, =0x20002AA8 <m_nrf_log_app_logs_data_dynamic>
+    881B        ldrh r3, [r3]
+    041B        lsls r3, r3, #16
+    F0430303    orr r3, r3, #3
+    9A01        ldr r2, [sp, #4]
+    490F        ldr r1, =0x00033060
+    4618        mov r0, r3
+    F7F8FFED    bl 0x00026C68 <nrf_log_frontend_std_1>
+--- ble_app.c -- 276 ---------------------------------------
+if (sleep_status)
+    4B0E        ldr r3, =0x2000338F <sleep_status>
+    781B        ldrb r3, [r3]
+    2B00        cmp r3, #0
+    D110        bne 0x0002DCB8
+--- ble_app.c -- 280 ---------------------------------------
+}
+else
+{
+// Prepare wakeup buttons.
+err_code = btn_ble_sleep_mode_prepare();
+    F7FFFFC5    bl 0x0002DC24 <btn_ble_sleep_mode_prepare>
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 285 ---------------------------------------
+APP_ERROR_CHECK(err_code);
+    9B01        ldr r3, [sp, #4]
+    9300        str r3, [sp]
+    9B00        ldr r3, [sp]
+    2B00        cmp r3, #0
+    D005        beq 0x0002DCB2
+--- ble_app.c -- 285 ---------------------------------------
+APP_ERROR_CHECK(err_code);
+    4A09        ldr r2, =0x000330DC
+    F240111D    movw r1, #0x11D
+    9800        ldr r0, [sp]
+    F7F9FC7B    bl 0x000275A8 <app_error_handler>
+--- ble_app.c -- 286 ---------------------------------------
+// Go to system-off mode (this function will not return; wakeup will cause a reset).
+err_code = sd_power_system_off();
+    F7FFFD27    bl 0x0002D704 <sd_power_system_off>
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 290 ---------------------------------------
+//APP_ERROR_CHECK(err_code);
+}
+}
+    BF00        nop
+    B003        add sp, sp, #12
+    F85DFB04    pop.w {pc}
+    20002AA8    .word 0x20002AA8
+    00033060    .word 0x00033060
+    2000338F    .word 0x2000338F
+    000330DC    .word 0x000330DC
+--- ble_app.c -- 296 ---------------------------------------
+* @details This function will be called for advertising events which are passed to the application.
+*
+* @param[in] ble_adv_evt Advertising event.
+*/
+static void on_adv_evt(ble_adv_evt_t ble_adv_evt) {
+    B500        push {lr}
+    B085        sub sp, sp, #20
+    4603        mov r3, r0
+    F88D3007    strb.w r3, [sp, #7]
+--- ble_app.c -- 301 ---------------------------------------
+uint32_t err_code;
+switch (ble_adv_evt) {
+    F89D3007    ldrb.w r3, [sp, #7]
+    2B03        cmp r3, #3
+    D004        beq 0x0002DCEC
+    2B04        cmp r3, #4
+    D014        beq 0x0002DD10
+    2B00        cmp r3, #0
+    D024        beq 0x0002DD34
+--- ble_app.c -- 323 ---------------------------------------
+sleep_mode_enter();
+//}
+break;
+default:
+break;
+    E035        b 0x0002DD58
+--- ble_app.c -- 305 ---------------------------------------
+err_code = indication_handler(BSP_INDICATE_ADVERTISING);
+    2002        movs r0, #2
+    F7FFFD25    bl 0x0002D73C <indication_handler>
+    9003        str r0, [sp, #12]
+--- ble_app.c -- 306 ---------------------------------------
+if (err_code > NRF_ERROR_SVC_HANDLER_MISSING)
+    9B03        ldr r3, [sp, #12]
+    2B01        cmp r3, #1
+    D92B        bls 0x0002DD52
+--- ble_app.c -- 307 ---------------------------------------
+NRF_LOG_INFO("on_adv_evt indication_handler return with error %d", err_code);
+    4B19        ldr r3, =0x20002AA8 <m_nrf_log_app_logs_data_dynamic>
+    881B        ldrh r3, [r3]
+    041B        lsls r3, r3, #16
+    F0430303    orr r3, r3, #3
+    9A03        ldr r2, [sp, #12]
+    4917        ldr r1, =0x0003311C
+    4618        mov r0, r3
+    F7F8FFAD    bl 0x00026C68 <nrf_log_frontend_std_1>
+--- ble_app.c -- 308 ---------------------------------------
+break;
+    E020        b 0x0002DD52
+--- ble_app.c -- 309 ---------------------------------------
+case BLE_ADV_EVT_SLOW:
+err_code = indication_handler(BSP_INDICATE_ADVERTISING);
+    2002        movs r0, #2
+    F7FFFD13    bl 0x0002D73C <indication_handler>
+    9003        str r0, [sp, #12]
+--- ble_app.c -- 311 ---------------------------------------
+if (err_code > NRF_ERROR_SVC_HANDLER_MISSING)
+    9B03        ldr r3, [sp, #12]
+    2B01        cmp r3, #1
+    D91B        bls 0x0002DD56
+--- ble_app.c -- 312 ---------------------------------------
+NRF_LOG_INFO("on_adv_evt indication_handler return with error %d", err_code);
+    4B10        ldr r3, =0x20002AA8 <m_nrf_log_app_logs_data_dynamic>
+    881B        ldrh r3, [r3]
+    041B        lsls r3, r3, #16
+    F0430303    orr r3, r3, #3
+    9A03        ldr r2, [sp, #12]
+    490E        ldr r1, =0x0003311C
+    4618        mov r0, r3
+    F7F8FF9B    bl 0x00026C68 <nrf_log_frontend_std_1>
+--- ble_app.c -- 313 ---------------------------------------
+break;
+    E010        b 0x0002DD56
+--- ble_app.c -- 314 ---------------------------------------
+case BLE_ADV_EVT_IDLE:
+NRF_LOG_INFO("on_adv_evt BLE_ADV_EVT_IDLE");
+    4B0A        ldr r3, =0x20002AA8 <m_nrf_log_app_logs_data_dynamic>
+    881B        ldrh r3, [r3]
+    041B        lsls r3, r3, #16
+    F0430303    orr r3, r3, #3
+    490A        ldr r1, =0x00033150
+    4618        mov r0, r3
+    F7F8FF83    bl 0x00026C4C <nrf_log_frontend_std_0>
+--- ble_app.c -- 318 ---------------------------------------
+// NRF_LOG_INFO("Start slow adverstising");
+// slow_advertising_init();
+// slow_advertising_start();
+//} else {
+ble_state = 0;
+    4B09        ldr r3, =0x200033BC <ble_state>
+    2200        movs r2, #0
+    701A        strb r2, [r3]
+--- ble_app.c -- 323 ---------------------------------------
+sleep_mode_enter();
+    F7FFFF8C    bl 0x0002DC68 <sleep_mode_enter>
+--- ble_app.c -- 324 ---------------------------------------
+//}
+break;
+    E002        b 0x0002DD58
+--- ble_app.c -- 308 ---------------------------------------
+break;
+    BF00        nop
+    E000        b 0x0002DD58
+--- ble_app.c -- 309 ---------------------------------------
+case BLE_ADV_EVT_SLOW:
+err_code = indication_handler(BSP_INDICATE_ADVERTISING);
+if (err_code > NRF_ERROR_SVC_HANDLER_MISSING)
+NRF_LOG_INFO("on_adv_evt indication_handler return with error %d", err_code);
+break;
+    BF00        nop
+--- ble_app.c -- 325 ---------------------------------------
+break;
+default:
+break;
+}
+}
+    BF00        nop
+    B005        add sp, sp, #20
+    F85DFB04    pop.w {pc}
+    20002AA8    .word 0x20002AA8
+    0003311C    .word 0x0003311C
+    00033150    .word 0x00033150
+    200033BC    .word 0x200033BC
+--- ble_app.c -- 330 ---------------------------------------
+/**@brief Function for initializing the Advertising functionality.
+*/
+ret_code_t advertising_init(void) {
+    B500        push {lr}
+    B0AD        sub sp, sp, #0xB4
+--- ble_app.c -- 334 ---------------------------------------
+uint32_t err_code;
+ble_advertising_init_t init;
+memset(&init, 0, sizeof(init));
+    466B        mov r3, sp
+    22AC        movs r2, #0xAC
+    2100        movs r1, #0
+    4618        mov r0, r3
+    F003FE9C    bl 0x00031AB8 <memset>
+--- ble_app.c -- 338 ---------------------------------------
+init.advdata.name_type = BLE_ADVDATA_FULL_NAME;
+    2302        movs r3, #2
+    F88D3000    strb.w r3, [sp, #0]
+--- ble_app.c -- 340 ---------------------------------------
+init.advdata.include_appearance = false;
+    2300        movs r3, #0
+    F88D3002    strb.w r3, [sp, #2]
+--- ble_app.c -- 341 ---------------------------------------
+//init.advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_LIMITED_DISC_MODE;
+init.advdata.flags = BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE; //allow unlimited timeout
+    2306        movs r3, #6
+    F88D3003    strb.w r3, [sp, #3]
+--- ble_app.c -- 343 ---------------------------------------
+init.srdata.uuids_complete.uuid_cnt = sizeof(m_adv_uuids) / sizeof(m_adv_uuids[0]);
+    2301        movs r3, #1
+    F8AD304C    strh.w r3, [sp, #0x4C]
+--- ble_app.c -- 345 ---------------------------------------
+init.srdata.uuids_complete.p_uuids = m_adv_uuids;
+    4B0F        ldr r3, =0x20002B60 <m_adv_uuids>
+    9314        str r3, [sp, #0x50]
+--- ble_app.c -- 346 ---------------------------------------
+init.config.ble_adv_fast_enabled = true;
+    2301        movs r3, #1
+    F88D307C    strb.w r3, [sp, #0x7C]
+--- ble_app.c -- 348 ---------------------------------------
+init.config.ble_adv_fast_interval = APP_ADV_INTERVAL;
+    2340        movs r3, #0x40
+    9322        str r3, [sp, #0x88]
+--- ble_app.c -- 349 ---------------------------------------
+init.config.ble_adv_fast_timeout = APP_ADV_DURATION;
+    F44F737A    mov.w r3, #0x3E8
+    9323        str r3, [sp, #0x8C]
+--- ble_app.c -- 350 ---------------------------------------
+init.evt_handler = on_adv_evt;
+    4B0B        ldr r3, =0x0002DCD1
+    9329        str r3, [sp, #0xA4]
+--- ble_app.c -- 352 ---------------------------------------
+err_code = ble_advertising_init(&m_advertising, &init);
+    466B        mov r3, sp
+    4619        mov r1, r3
+    480A        ldr r0, =0x200033E4 <m_advertising>
+    F001FA32    bl 0x0002F21E <ble_advertising_init>
+    902B        str r0, [sp, #0xAC]
+--- ble_app.c -- 354 ---------------------------------------
+if (err_code != NRF_SUCCESS)
+    9B2B        ldr r3, [sp, #0xAC]
+    2B00        cmp r3, #0
+    D001        beq 0x0002DDC6
+--- ble_app.c -- 355 ---------------------------------------
+return err_code;
+    9B2B        ldr r3, [sp, #0xAC]
+    E003        b 0x0002DDCE
+--- ble_app.c -- 356 ---------------------------------------
+ble_advertising_conn_cfg_tag_set(&m_advertising, APP_BLE_CONN_CFG_TAG);
+    2101        movs r1, #1
+    4805        ldr r0, =0x200033E4 <m_advertising>
+    F001FA1B    bl 0x0002F204 <ble_advertising_conn_cfg_tag_set>
+--- ble_app.c -- 358 ---------------------------------------
+}
+    4618        mov r0, r3
+    B02D        add sp, sp, #0xB4
+    F85DFB04    pop.w {pc}
+    BF00        nop
+    20002B60    .word 0x20002B60
+    0002DCD1    .word 0x0002DCD1
+    200033E4    .word 0x200033E4
+--- ble_app.c -- 394 ---------------------------------------
+* mechanism to demonstrate its use.
+*
+* @param[in] p_evt Event received from the Connection Parameters Module.
+*/
+static void on_conn_params_evt(ble_conn_params_evt_t *p_evt) {
+    B500        push {lr}
+    B085        sub sp, sp, #20
+    9001        str r0, [sp, #4]
+--- ble_app.c -- 399 ---------------------------------------
+uint32_t err_code;
+if (p_evt->evt_type == BLE_CONN_PARAMS_EVT_FAILED) {
+    9B01        ldr r3, [sp, #4]
+    781B        ldrb r3, [r3]
+    2B00        cmp r3, #0
+    D11A        bne 0x0002DE28
+--- ble_app.c -- 402 ---------------------------------------
+err_code = sd_ble_gap_disconnect(m_conn_handle, BLE_HCI_CONN_INTERVAL_UNACCEPTABLE);
+    4B0F        ldr r3, =0x20002B5C <m_conn_handle>
+    881B        ldrh r3, [r3]
+    213B        movs r1, #0x3B
+    4618        mov r0, r3
+    F7FFFC87    bl 0x0002D70C <sd_ble_gap_disconnect>
+    9003        str r0, [sp, #12]
+--- ble_app.c -- 403 ---------------------------------------
+if (err_code != NRF_SUCCESS) {
+    9B03        ldr r3, [sp, #12]
+    2B00        cmp r3, #0
+    D010        beq 0x0002DE28
+--- ble_app.c -- 404 ---------------------------------------
+err_code = indication_handler(BSP_INDICATE_FATAL_ERROR);
+    200C        movs r0, #12
+    F7FFFC98    bl 0x0002D73C <indication_handler>
+    9003        str r0, [sp, #12]
+--- ble_app.c -- 405 ---------------------------------------
+if (err_code > NRF_ERROR_SVC_HANDLER_MISSING)
+    9B03        ldr r3, [sp, #12]
+    2B01        cmp r3, #1
+    D909        bls 0x0002DE28
+--- ble_app.c -- 406 ---------------------------------------
+NRF_LOG_INFO("indication_handler return with error %d", err_code);
+    4B07        ldr r3, =0x20002AA8 <m_nrf_log_app_logs_data_dynamic>
+    881B        ldrh r3, [r3]
+    041B        lsls r3, r3, #16
+    F0430303    orr r3, r3, #3
+    9A03        ldr r2, [sp, #12]
+    4905        ldr r1, =0x00033060
+    4618        mov r0, r3
+    F7F8FF20    bl 0x00026C68 <nrf_log_frontend_std_1>
+--- ble_app.c -- 407 ---------------------------------------
+}
+}
+}
+    BF00        nop
+    B005        add sp, sp, #20
+    F85DFB04    pop.w {pc}
+    20002B5C    .word 0x20002B5C
+    00000000    .word 0x00000000
