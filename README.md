@@ -1,20 +1,20 @@
-# Team Scheire Bicycle Light for Carmen
+# Team Scheire BicycleLight voor Carmen
 
-This repository contains the code and hardware schematics of two projects:
-1. CME (Bicycle Light for Carmen)
-2. SmartLight (the bicycle light to indicate a positive or negative bike experience)
+Deze repository bevat de code en hardware schemas van twee deelprojecten:
+1. CME (Het fietslicht voor Carmen)
+2. SmartLight (het slimme fietslicht waarmee je een positive of negatieve fiets ervaring kan meedelen)
 
 
 ## 1. CME
 
-In this folder you find the imtermediate designs (v0.1) and the final version with the led strip (v1.0). Both hardware schematic and code.
+In deze folder staan de tussentijdse designs (v0.1) en de finale versie die een arduino mini gebruikt (v1.0). Zowel hardware schemas en software kan je er terug vinden.
 
 
 ## 2. SmartLight
 
-In the folder you will find the following items:
-- hardware schematic of the device and bill of materials
-- the design of the enclosure
-- the firmware for the device
-- the code for the android/iphone app to send the BLE (Bluetooth Low Energy) data from to a backend
- 
+In deze folder kan je volgende terug vinden:
+- Hardware schema of het device en de 'bill of materials'
+- Het ontwerp van de behuizing
+- De firmware van het toestel
+- De code voor de smartphone app (zowel android als iphone) dat de BLE (Bluetooth Low Energy) data van het toestel doorstuurt naar de backend
+
