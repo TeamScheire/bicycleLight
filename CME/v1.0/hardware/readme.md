@@ -17,4 +17,4 @@ From the pins of the battery 2 wires are soldered to be connected to the PCB (or
 Measure with a voltmeter the correct combinations of the handle bar buttons to connect 3 of them to the GND and the others the the corresponding pins on the connector.
 
 
-Fron the Hornit bell, remove the button and connect the two wires which were connected to the button the CME. Measure the voltage to connect them accordingly.
+From the Hornit bell, remove the button and connect the two wires which were connected to the button the CME. Measure the voltage to connect them accordingly.
