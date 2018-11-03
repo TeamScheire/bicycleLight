@@ -65,8 +65,8 @@
  </Watch4>
  <Files>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="140" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="127" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="71" useTextEdit="1" useBinaryEdit="0" left="0" path="CME_Light_Button_octa_s132.emProject" selected="1" top="58" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="7385" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_config.h" selected="0" top="7359" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="26" useTextEdit="1" useBinaryEdit="0" left="0" path="CME_Light_Button_octa_s132.emProject" selected="1" top="14" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="7385" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../sdk_config.h" selected="0" top="7359" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="47" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../config.h" selected="0" top="27" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="14" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../lib/lp55231.c" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="15" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../lib/lp55231.h" selected="0" top="0" codecName="Default"/>
@@ -74,9 +74,10 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="73" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../custom_board.h" selected="0" top="14" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="103" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../lib/lsm303_agr.c" selected="0" top="69" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="97" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../lib/LSM303AGR_acc_driver.h" selected="0" top="62" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="4" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../readme.md" selected="0" top="0" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="4" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../readme.md" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="53" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../sdk/components/libraries/log/nrf_log_backend_interface.h" selected="0" top="27" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="64" y="70" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../sdk/components/libraries/log/src/nrf_log_frontend.c" selected="0" top="49" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="138" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../sdk/components/libraries/log/src/nrf_log_frontend.c" selected="0" top="29" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="9" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../sdk/components/libraries/log/src/nrf_log_backend_rtt.c" selected="0" top="0" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="CME_Light_Button_octa" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/mweyn/git/verkeersveiligheid/code/app/lib" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="CME_Light_Button_octa" fileDialogDefaultFilter="*.xml;*.xsd;*.xsl;*.xslt" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/Users/maartenweyn/git/teamscheirebike/SmartLight/firmware/CME_Light_Button/octa/s132/ses" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
