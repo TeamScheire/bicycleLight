@@ -1,0 +1,3 @@
+[submodule "CME/lib/eagle/arduino"]
+	path = CME/lib/eagle/arduino
+	url = https://github.com/cyberlink1/Arduino-Eagle-Cad-Library.git
