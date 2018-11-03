@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="be.postduif.bicyclelight" ios-CFBundleVersion="4.0.5" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>bicycleLight</name>
+    <description>
+       A companion app for the bluetooth smart bicycle light
+    </description>
+    <author email="kurt@postduif.be" href="http://www.postduif.be">
+        Kurt Beheydt
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="BackupWebStorage" value="local" />
+        <config-file parent="UIBackgroundModes" target="*-Info.plist">
+            <array>
+                <string>bluetooth-central</string>
+            </array>
+        </config-file>
+        <config-file parent="NSBluetoothPeripheralUsageDescription" target="*-Info.plist">
+            <string>Deze app maakt via bluetooth verbinding met het slimme fietslicht.</string>
+        </config-file>
+        <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
+            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+        </config-file>
+        <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
+            <string>Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig.</string>
+        </config-file>
+        <config-file parent="ITSAppUsesNonExemptEncryption" target="*-Info.plist">
+            <false />
+        </config-file>
+    </platform>
+    <plugin name="cordova-background-geolocation-lt" spec="^2.13.1">
+        <variable name="BACKGROUND_MODE_LOCATION" value="&lt;string&gt;location&lt;/string&gt;" />
+        <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig." />
+        <variable name="MOTION_USAGE_DESCRIPTION" value="Om de meldingen op kaart te kunnen zetten, hebben we je locatie nodig. Hiervoor wordt ook de accelerometer gebruikt." />
+    </plugin>
+    <engine name="browser" spec="^5.0.4" />
+    <engine name="ios" spec="^4.5.5" />
+    <engine name="android" spec="^7.0.0" />
+</widget>
