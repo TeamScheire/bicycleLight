@@ -7,7 +7,7 @@ Deze repository bevat de code en hardware schemas van twee deelprojecten:
 
 ## 1. CME
 
-In deze folder staan de tussentijdse designs (v0.1) en de finale versie die een arduino mini gebruikt (v1.0). Zowel hardware schemas en software kan je er terug vinden.
+In deze folder staat de finale versie die een arduino mini gebruikt (v1.0). Zowel hardware schemas en software kan je er terug vinden.
 
 
 ## 2. SmartLight
