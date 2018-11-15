@@ -1,3 +1,9 @@
+/*
+ * Code for a esp-wroom-32 to test and simulate the smart bicycle light
+ * 
+ * Connect a button on pin 19 to test the input of a notification.
+ * 
+ */
 // using esp32 libraries from https://github.com/nkolban/ESP32_BLE_Arduino
 
 #include <BLEDevice.h>
@@ -95,23 +101,22 @@ bool initBLE() {
   return true;
 }
 
-void sendBellNotification(char* message) {
+void sendLightNotification(char* message) {
   if (deviceConnected && deviceNotifying) {
     Serial.printf("*** Sent Value: %d ***\n", messageId);
     pTxCharacteristic->setValue(message);
-//    pTxCharacteristic->setValue(&messageId, 1);
     pTxCharacteristic->notify();
     messageId++;
   }
 }
 
-void checkBellPush() {
+void checkLightPush() {
   uint8_t newStatus = digitalRead(buttonPin);
   
   if ((buttonStatus == 0) && (newStatus == 1)) {
     buttonStatus = 1;
     Serial.println("pressed");
-    sendBellNotification("testbutton,1");
+    sendLightNotification("testbutton,1");
   } else if (newStatus == 0) {
     buttonStatus = 0;
   }  
@@ -131,10 +136,10 @@ void setup() {
 }
 
 void loop() {
-  checkBellPush();
+  checkLightPush();
 
   if ((lastHeartbeat + heartbeatInterval) < millis()) {
-    sendBellNotification("testheartbeat,1");
+    sendLightNotification("testheartbeat,1");
     lastHeartbeat = millis();
   }
   
