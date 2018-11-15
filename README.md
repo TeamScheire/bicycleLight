@@ -1,8 +1,9 @@
 # Team Scheire BicycleLight voor Carmen
 
 Deze repository bevat de code en hardware schemas van twee deelprojecten:
-1. CME (Het fietslicht voor Carmen)
-2. SmartLight (het slimme fietslicht waarmee je een positive of negatieve fiets ervaring kan meedelen)
+
+1. CME (Het fietslicht en alle aanpassingen voor Carmen haar fiets)
+2. SmartLight (het slimme fietslicht waarmee je een positive of negatieve fietservaring kan meedelen)
 
 
 ## 1. CME
