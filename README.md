@@ -13,8 +13,8 @@ In deze folder staat de finale versie die een arduino mini gebruikt (v1.0). Zowe
 ## 2. SmartLight
 
 In deze folder kan je volgende terug vinden:
+
 - Hardware schema of het device en de 'bill of materials'
 - Het ontwerp van de behuizing
 - De firmware van het toestel
-- De code voor de smartphone app (zowel android als iphone) dat de BLE (Bluetooth Low Energy) data van het toestel doorstuurt naar de backend
-
+- De [code voor de smartphone app](Smartlight/app) (zowel android als iphone) dat de BLE (Bluetooth Low Energy) data van het toestel doorstuurt naar de backend.
