@@ -1,5 +1,5 @@
 /*
-  cme_arduino.ino - Code to controle the lights of the bike of Carmen
+  cme_arduino.ino - Code to control the lights of the bike of Carmen
   Created by Maarten Weyn, August 25, 2018.
   Released into the public domain.
 
