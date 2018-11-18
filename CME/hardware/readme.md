@@ -1,3 +1,8 @@
+In deze folder vind je het schema van de opstelling. Dit is gewoon gesoldeerd op een prototype Eurocard PCB.
+
+Voor de behuzing is uit een stuk hout de juiste gleuf uitgefreezed waarin de LCD strip past. Deze is met Resion Epoxy gevuld zodat het waterdicht is. Onderaan is een rechthoek uitgefreezed waar de elektronica in past.
+
+
 # Hardware components
 
 - Arduino pro mini 3.3V 8 Mhz: https://www.antratek.nl/arduino-pro-mini-328-3-3v-8mhz
