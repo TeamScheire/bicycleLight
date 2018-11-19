@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# bicyclelight
-=======
 # Smartphone app voor het slimme fietslicht
 ## Installatie
 
@@ -72,4 +69,3 @@ Wil je stoppen met fietsen, dan kan je drie dingen doen om ervoor te zorgen dat 
 - ofwel sluit je de app helemaal af: dubbelklik op de homebutton en dan de app wegswipen. (Mocht je dit niet kennen, deze procedure staat [hier uitgelegd](https://www.imore.com/how-force-quit-apps-iphone-ipad)) 
 
 Wil je daarna terug beginnen fietsen, open de app, check of je licht nog aan staat (knipperende led), zet je licht opnieuw aan (zwarte knop), kijk op de pagina devices of je nog verbonden bent, zoniet klik op ‘refresh device list’ en je lamp zal terug verbinden.
->>>>>>> d8745afd7f5b38c460903eb3af9ccc9a39e79447
