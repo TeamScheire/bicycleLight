@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# bicyclelight
-=======
 # Smartphone app voor het slimme fietslicht
 ## Installatie
 
