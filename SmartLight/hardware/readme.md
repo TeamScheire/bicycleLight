@@ -1,6 +1,6 @@
 # PCB
 
-Naast de PCB en de compententen die in [BOM3.xlsx](pcb_BLELight/BOM3.xlsx) zijn er nog enkel componenten nodig die verbonden worden met de PCB en ingebouwd in de behuizing.
+Naast de PCB en de compententen (lijst via [BOM3.xlsx](pcb_BLELight/BOM3.xlsx)) zijn er nog enkel componenten nodig die verbonden worden met de PCB en ingebouwd in de behuizing.
 
 ## Extra componenten:
 
