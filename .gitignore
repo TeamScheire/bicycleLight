@@ -51,7 +51,4 @@ ses/Output
 */ses/Output
 SmartLight/firmware/CME_Light_Button/octa/s132/ses/Output
 *.s#*
-<<<<<<< HEAD
-=======
 SmartLight/app/platforms/
->>>>>>> d8745afd7f5b38c460903eb3af9ccc9a39e79447

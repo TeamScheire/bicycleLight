@@ -11,11 +11,11 @@
     "license": "Apache-2.0",
     "dependencies": {
         "cordova-android": "^7.0.0",
-        "cordova-background-geolocation-lt": "^2.13.1",
+        "cordova-background-geolocation-lt": "^2.14.1",
         "cordova-browser": "^5.0.4",
         "cordova-ios": "^4.5.5",
         "cordova-plugin-background-fetch": "^5.4.1",
-        "cordova-plugin-ble-central": "^1.2.0",
+        "cordova-plugin-ble-central": "^1.2.2",
         "cordova-plugin-cocoalumberjack": "0.0.4",
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-geolocation": "^4.0.1",
@@ -41,8 +41,8 @@
         },
         "platforms": [
             "browser",
-            "ios",
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
